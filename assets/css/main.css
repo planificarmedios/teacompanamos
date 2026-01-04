@@ -2462,8 +2462,8 @@ section,
 }
 
 .call-to-action .services-grid .service-card .service-icon {
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
   margin: 0 auto 2rem;
   display: flex;
   align-items: center;
@@ -2474,7 +2474,7 @@ section,
 }
 
 .call-to-action .services-grid .service-card .service-icon i {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--accent-color);
   transition: all 0.4s ease;
 }
@@ -6632,3 +6632,65 @@ body.mobile-nav-active .header {
   white-space: nowrap;
 }
 
+custom-span {
+  font-weight: 800;
+  color: var(--heading-color);
+}
+
+/* =========================================
+   Services grid – icon + title inline
+========================================= */
+/* =========================================
+   Services grid – card layout control
+========================================= */
+
+#services-grid .service-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;                 /* todas las cards iguales */
+  padding: 20px;
+}
+
+/* Header: icono + título juntos */
+#services-grid .service-card .service-icon,
+#services-grid .service-card h4 {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Contenedor visual icono + título */
+#services-grid .service-card .service-icon {
+  font-size: 0.9rem;            /* icono más chico */
+  margin-right: 8px;
+  flex-shrink: 0;               /* nunca se va abajo solo */
+}
+
+/* Título */
+#services-grid .service-card h4 {
+  display: inline;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+/* Agrupamos icono + título */
+#services-grid .service-card .service-icon + h4 {
+  display: inline;
+}
+
+/* Texto */
+#services-grid .service-card p {
+  flex-grow: 1;                 /* empuja el link hacia abajo */
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* Link siempre abajo */
+#services-grid .service-card .service-link {
+  margin-top: auto;
+  align-self: center;
+}
+
+#services-grid .service-card {
+  align-items: center;
+  text-align: center;
+}
