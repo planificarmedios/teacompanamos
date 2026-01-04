@@ -1105,7 +1105,7 @@ section,
 
 @media (max-width: 992px) {
   .hero {
-    padding: 60px 0;
+    padding: 70px 0;
   }
 
   .hero .hero-content {
@@ -1443,7 +1443,7 @@ section,
 # Featured Departments Section
 --------------------------------------------------------------*/
 .featured-departments {
-  padding: 120px 0;
+  padding: 10px 0;
 }
 
 .featured-departments .departments-showcase {
@@ -6586,3 +6586,49 @@ body.mobile-nav-active .header {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
+
+/* =========================================
+   Department cards – stats layout
+========================================= */
+
+/* =========================================
+   Department cards – center layout
+========================================= */
+
+.department-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centra TODO horizontalmente */
+  text-align: center;    /* centra texto */
+}
+
+
+/* Contenedor de stats */
+.department-card .card-stats {
+  display: flex;
+  justify-content: center;       /* centra el grupo */
+  gap: 16px;                     /* equidistancia */
+  margin-top: 16px;
+}
+
+/* Cada item */
+.department-card .card-stats .stat-item {
+  display: flex;
+  justify-content: center;
+}
+
+/* El stat-number SOLO en department-card */
+.department-card .card-stats .stat-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 14px;
+  border-radius: 999px;          /* pill */
+  background-color: rgba(0, 0, 0, 0.05);
+
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
