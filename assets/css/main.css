@@ -34,7 +34,7 @@
   --nav-color: #363f40;  /* The default color of the main navmenu links */
   --nav-hover-color: #00986B; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over  navigation items */
   --nav-dropdown-color: #363f40; /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: #00986B; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
@@ -6530,4 +6530,59 @@ section,
   .hero-image-stack img {
     height: 200px;
   }
+}
+
+.hero .cta-section .cta-buttons .btn.btn-primary {
+  background: #022647;
+  border: none;
+  color: var(--contrast-color);
+}
+
+.hero .cta-section .cta-buttons .btn.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px color-mix(in srgb, var(#022647), transparent 60%);
+}
+
+.btn.btn-custom {
+  background: linear-gradient(135deg, var(--accent-color), color-mix(in srgb, var(--accent-color), black 20%));
+  border: none;
+  color: var(--contrast-color);
+  padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===============================
+   Header translúcido (solución)
+=============================== */
+.header {
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* =========================================
+   FIX menú mobile (mobile-nav-active)
+========================================= */
+
+/* Fondo y visibilidad del menú mobile */
+body.mobile-nav-active .navbar {
+  background-color: #ffffff;
+}
+
+/* Asegurar que el menú esté por encima */
+body.mobile-nav-active .navbar {
+  z-index: 9999;
+}
+
+/* Evitar que el blur afecte el menú */
+body.mobile-nav-active .header {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
