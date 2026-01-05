@@ -6831,4 +6831,28 @@ custom-span {
   }
 }
 
+.booking-section,
+.appointment-card {
+  height: 100%;
+}
+
+.footer-about {
+  justify-content: flex-start; /* bloque alineado arriba */
+}
+
+.footer-logo {
+  max-width: 220px;   /* MUY importante para alineación */
+  height: auto;
+}
+
+.social-links a {
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
 
