@@ -6817,3 +6817,8 @@ custom-span {
 
 }
 
+.btn-custom,
+.btn-primary {
+  color: #ffffff !important;
+}
+

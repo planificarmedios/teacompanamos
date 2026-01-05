@@ -95,6 +95,7 @@
    * Animation on scroll function and init
    */
   function aosInit() {
+  if (window.innerWidth >= 992) { // solo desktop
     AOS.init({
       duration: 600,
       easing: 'ease-in-out',
@@ -102,7 +103,10 @@
       mirror: false
     });
   }
-  window.addEventListener('load', aosInit);
+}
+
+window.addEventListener('load', aosInit);
+
 
   /**
    * Initiate glightbox
@@ -114,11 +118,16 @@
   /**
    * Initiate Pure Counter
    */
+  
+  if (window.innerWidth >= 992) {
   new PureCounter();
+}
+
 
   /**
    * Init isotope layout and filters
    */
+  if (window.innerWidth >= 992) {
   document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
     let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
     let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
@@ -141,13 +150,11 @@
         initIsotope.arrange({
           filter: this.getAttribute('data-filter')
         });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
       }, false);
     });
-
   });
+}
+
 
   /**
    * Init swiper sliders
@@ -166,7 +173,12 @@
     });
   }
 
-  window.addEventListener("load", initSwiper);
+  window.addEventListener("load", () => {
+  if (document.querySelector('.init-swiper')) {
+    initSwiper();
+  }
+});
+
 
   /**
    * Frequently Asked Questions Toggle
