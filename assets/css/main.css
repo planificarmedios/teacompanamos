@@ -6694,3 +6694,126 @@ custom-span {
   align-items: center;
   text-align: center;
 }
+
+/* =====================================================
+   MOBILE OPTIMIZATION (index.html only)
+   No afecta desktop
+===================================================== */
+@media (max-width: 768px) {
+
+  /* ---------- NAVBAR / HERO ---------- */
+
+  body.mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .hero {
+    padding-top: 90px; /* compensa navbar fixed sin empujar demasiado */
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+    line-height: 1.25;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* ---------- BOTONES ---------- */
+
+  .btn,
+  .btn-primary,
+  .btn-custom {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+  }
+
+  /* ---------- SERVICES GRID ---------- */
+
+  #services-grid .service-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 18px;
+    text-align: center;
+  }
+
+  /* icon + title alineados */
+  #services-grid .service-card h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  #services-grid .service-card .service-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #services-grid .service-card .service-icon i {
+    font-size: 0.85rem; /* icono más chico */
+  }
+
+  #services-grid .service-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: auto;
+  }
+
+  /* link siempre abajo */
+  #services-grid .service-card .service-link {
+    margin-top: 15px;
+    align-self: center;
+  }
+
+  /* ---------- DEPARTMENTS CARDS ---------- */
+
+  .department-card {
+    text-align: center;
+    padding: 18px;
+  }
+
+  .department-card .card-icon i {
+    font-size: 1.4rem;
+  }
+
+  .department-card .card-title {
+    font-size: 1rem;
+  }
+
+  /* stats centrados y livianos */
+  .department-card .card-stats {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .department-card .stat-item .stat-number {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 12px;
+  }
+
+  /* ---------- IMÁGENES ---------- */
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ---------- AOS (reduce impacto en mobile) ---------- */
+
+  [data-aos] {
+    transition-duration: 0.4s !important;
+  }
+
+}
+
