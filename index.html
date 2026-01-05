@@ -23,7 +23,7 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=3.0" rel="stylesheet">
+  <link href="assets/css/main.css?v=4.0" rel="stylesheet">
 
  
 </head>
@@ -135,8 +135,20 @@
 
             <div class="hero-image">
               <div class="hero-image-stack">
-                <img src="assets/img/health/consultation-4.webp" alt="Imagen superior">
-                <img src="assets/img/health/Recurso-10.webp" alt="Imagen inferior">
+                <img 
+                src="assets/img/health/consultation-4.webp"
+                alt="Imagen superior"
+                fetchpriority="high"
+                decoding="async"
+                >
+
+                <img 
+                  src="assets/img/health/Recurso-10.webp"
+                  alt="Imagen inferior"
+                  loading="lazy"
+                  decoding="async"
+                  >
+              
               </div>
             </div>
 
