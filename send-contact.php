@@ -19,9 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $name    = trim($_POST['name'] ?? '');
 $email   = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
 $subject = trim($_POST['subject'] ?? 'Nuevo mensaje desde la web');
+$phone = $_POST['phone'] ?? '';
 $message = trim($_POST['message'] ?? '');
 
-if (!$email || !$message) {
+if (!$email || !$message || !$phone) {
     echo json_encode([
         'success' => false,
         'message' => 'Datos inválidos'
@@ -52,6 +53,7 @@ try {
     $mail->Body =
         "Nombre: $name\n" .
         "Email: $email\n\n" .
+        "Teléfono: $phone\n" .
         "Mensaje:\n$message";
 
     /*
