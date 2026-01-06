@@ -119,9 +119,9 @@ window.addEventListener('load', aosInit);
    * Initiate Pure Counter
    */
   
-  if (window.innerWidth >= 992) {
-  new PureCounter();
-}
+  //   if (window.innerWidth >= 992) {
+  //   new PureCounter();
+  // }
 
 
   /**
