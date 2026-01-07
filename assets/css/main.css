@@ -7009,3 +7009,147 @@ custom-span {
     max-width: 320px;
   }
 }
+
+/* HEADER */
+#services .service-card .service-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+/* Línea de badges */
+#services .service-card .service-header > .service-category {
+  display: inline-flex;
+}
+
+/* Agrupamos badges en una misma fila */
+#services .service-card .service-header {
+  text-align: center;
+}
+
+#services .service-card .service-category {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 18px;
+  margin: 0 6px;
+  border: 2px solid #1f3c5b;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1f3c5b;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Contenedor virtual/presencial en fila */
+#services .service-card .service-header {
+  --badge-gap: 8px;
+}
+
+/* Icono centrado debajo */
+#services .service-card .service-icon {
+  width: 88px;
+  height: 88px;
+  border-radius: 22px;
+  background: #fcfcfb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#services .service-card .service-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 999px;
+  background: #1f3c5b;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  border: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#services .service-card .service-btn {
+  width: auto;              /* ❌ ya no ocupa todo */
+  min-width: 200px;         /* ancho elegante */
+  padding: 14px 28px;
+  border-radius: 999px;
+}
+
+@media (max-width: 768px) {
+
+  /* Card más compacta */
+  #services .service-card {
+    padding: 28px 20px;
+  }
+
+  /* Icono un poco más chico */
+  #services .service-card .service-icon {
+    width: 72px;
+    height: 72px;
+  }
+
+  #services .service-card .service-icon img {
+  width: 52px;
+  height: 52px;
+  max-width: none;
+  transform: scale(1.15);
+}
+
+
+  /* Título más equilibrado */
+  #services .service-card h4 {
+    font-size: 22px;
+  }
+
+  /* Texto más legible */
+  #services .service-card p {
+    font-size: 15px;
+    padding: 14px;
+  }
+
+  /* Botón más chico en mobile */
+  #services .service-card .service-btn {
+    min-width: 180px;
+    padding: 12px 22px;
+    font-size: 15px;
+  }
+
+}
+
+#services .service-card .service-body h4 {
+  text-align: center;
+}
+
+#services .service-card {
+  border: 1px solid #e2e8f0; /* línea fina */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#services .service-card .service-body {
+  flex: 1;
+}
+
+#services .service-card .service-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+
+/* Reduce espacio superior de la sección Services */
+#services.services.section {
+  padding-top: 25px;   /* probá 40 / 32 si querés más compacto */
+  padding-bottom: 60px;
+}
