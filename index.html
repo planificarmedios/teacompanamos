@@ -30,7 +30,7 @@
 
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=11.0" rel="stylesheet">
+  <link href="assets/css/main.css?v=12.0" rel="stylesheet">
 
  
 </head>
@@ -50,9 +50,9 @@
           <li><a href="index.html" class="active">Inicio</a></li>
           <li><a href="#featured-departments">Unidades de atención</a></li>
           <li><a href="#servicios-destacados">Servicios</a></li>
-          <li><a href="#home-about">Nosotros</a></li>
+          <li><a href="#about-us">Nosotros</a></li>
           <li><a href="#contact">Contacto</a></li>
-          <li><a href="">Redes</a></li>
+          <li><a href="#social-media">Redes</a></li>
       
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -234,8 +234,7 @@
                       <span>Atención personalizada</span>
                     </div>
                   </div>
-                  <!-- <a  class="cta-link">Learn More <i class="fas fa-arrow-right"></i></a> -->
-                </div>
+                 </div>
               </div>
               <div class="col-lg-6 order-lg-2">
                 <div class="department-visual">
@@ -346,7 +345,9 @@
                   <p>Psicoterapia para adultos. Espacios de escucha, contención y transformación.</p>
                 </div>
                 <div class="service-footer">
-                  <a href="service-details.html" class="service-btn">
+                  <a href="#gallery" class="service-btn" id="service-btn-asistencia" 
+                    data-section='tab-asistencia'
+                    onclick="mostrarUnidad('section-asistencia')" >
                     Ver más
                     <i class="fas fa-arrow-right"></i>
                   </a>
@@ -371,7 +372,9 @@
                   <p>Apoyo terapéutico y cuidado domiciliario en el entorno cotidiano de cada persona.</p>
                 </div>
                 <div class="service-footer">
-                  <a href="service-details.html" class="service-btn">
+                  <a href="#gallery" class="service-btn" id="service-btn-acompanamiento" 
+                    data-section='tab-acompanamiento'
+                    onclick="mostrarUnidad('section-acompanamiento')">
                     Ver más
                     <i class="fas fa-arrow-right"></i>
                   </a>
@@ -397,7 +400,9 @@
                   <p>Espacios grupales para acompañar a personas que transitan condiciones de salud de curso prolongado.</p>
                 </div>
                 <div class="service-footer">
-                  <a href="service-details.html" class="service-btn">
+                  <a href="#gallery" class="service-btn" id="service-btn-psicoeducativa" 
+                    data-section='tab-psicoeducativa'
+                    onclick="mostrarUnidad('section-psicoeducativa')">
                     Ver más
                     <i class="fas fa-arrow-right"></i>
                   </a>
@@ -412,6 +417,464 @@
       </div>
 
     </section>
+
+    <!--------------------------- 5 -->
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div data-default-filter="*">
+          <ul class="gallery-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
+            <li id="tab-asistencia" data-filter=".filter-nature" class="filter-active" 
+            data-section='tab-asistencia'
+            onclick="mostrarUnidad('section-asistencia')">
+              Unidad de Asistencia Psicológica
+            </li>
+            <li id="tab-acompanamiento" data-filter=".filter-architecture" 
+            data-section='tab-acompanamiento'
+            onclick="mostrarUnidad('section-acompanamiento')">
+              Unidad de Acompañamiento Terapéutico
+            </li>
+            <li id="tab-psicoeducativa" data-filter=".filter-people" 
+            data-section='tab-psicoeducativa'
+            onclick="mostrarUnidad('section-psicoeducativa')">
+              Unidad Psicoeducativa
+            </li>
+          </div>
+
+      </div>
+
+    </section><!-- /Gallery Section -->
+
+    <section id="section-asistencia" class="service-details-2 section unidad-content active" >
+
+      <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
+            <div class="service-image">
+              <img src="assets/img/health/unidad-psicologica.png" alt="Cardiology Services" class="img-fluid">
+             </div>
+          </div>
+
+          <div class="col-lg-6 aos-init aos-animate" data-aos="fade-left" data-aos-delay="300">
+            <div class="service-content">
+              <!-- <h2>Unidad Asistencia Psicológica</h2> -->
+              <p class="service-tagline">Profesionalismo, calidez y compromiso.</p>
+
+              <p>La está dedicada a brindar atención psicológica especializada
+                a personas adultas, adaptándose a sus tiempos, necesidades y contextos. Ofrecemos dos
+                modalidades: sesiones presenciales en consultorio y atención virtual a través de telepsicología,
+                garantizando accesibilidad y continuidad terapéutica.</p>
+              
+              <p>Nuestro equipo clínico trabaja desde una perspectiva integradora, respetuosa y empática,
+                creando espacios seguros donde cada persona pueda explorar sus emociones, resignificar
+                experiencias y construir herramientas para afrontar sus desafíos. Ya sea en el consultorio o desde
+                la comodidad del hogar, el vínculo terapéutico se sostiene con profesionalismo, calidez y
+                compromiso.</p>
+
+              <div class="service-actions">
+                <a href="#contact" class="btn-primary">Consultar</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SERVICIOS -->
+        <div class="row mt-5">
+
+          <!-- Card 1 -->
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card h-100">
+              <h4>Terapia psicológica individual</h4>
+              <p>
+                Espacio terapéutico personalizado para trabajar dificultades emocionales,
+                conductuales y vinculares. El enfoque es en
+                <strong>terapia cognitivo-conductual</strong>,
+                orientada a objetivos definidos junto al paciente.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card h-100">
+              <h4>Tratamiento de conductas adictivas</h4>
+              <p>Intervención psicológica para el acompañamiento y tratamiento de distintas adicciones:</p>
+              <ul>
+                <li>Ludopatía.</li>
+                <li>Drogadependencia.</li>
+                <li>Adicciones psicológicas (uso problemático de tecnologías, entre otras).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card h-100">
+              <h4>Atención a traumas y eventos críticos</h4>
+              <p>Abordaje especializado de experiencias traumáticas que impactan en la salud mental, tales como:</p>
+              <ul>
+                <li>Catástrofes naturales.</li>
+                <li>Accidentes de tránsito.</li>
+                <li>Procesos migratorios y desarraigo.</li>
+                <li>Trauma social vinculado a conflictos, guerras o dictaduras.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mt-4 align-items-stretch">
+
+          <!-- Card 4 -->
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card h-100">
+              <h4>Innovación terapéutica</h4>
+              <p>Incorporamos herramientas tecnológicas que potencian el proceso terapéutico y mejoran la experiencia clínica:</p>
+              <ul>
+                <li><strong>Realidad virtual</strong>, para el abordaje de fobias, ansiedad y exposición controlada.</li>
+                <li><strong>Biofeedback</strong>, para el entrenamiento en autorregulación emocional y manejo del estrés.</li>
+                <li><strong>Simulador de manejo</strong>, orientado a trastornos asociados a la conducción.</li>
+                <li><strong>Luminoterapia</strong>, como complemento en tratamientos específicos.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card h-100">
+              <h4>Servicios para instituciones y sindicatos</h4>
+              <p>Intervención psicológica para el acompañamiento y tratamiento de distintas adicciones:</p>
+              <ul>
+                <li>Ludopatía.</li>
+                <li>Drogadependencia.</li>
+                <li>Adicciones psicológicas (uso problemático de tecnologías, entre otras).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Espacio para imagen -->
+          <div class="col-lg-4 d-flex align-items-center justify-content-center aos-init aos-animate"
+              data-aos="fade-left" data-aos-delay="300">
+
+            <!-- Reemplazá este div por tu <img> -->
+            <div class="text-center">
+              <img src="assets/img/health/valores.png" alt="Ilustración"
+                  class="img-fluid" style="max-height: 280px;">
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row mt-5">
+
+          <div class="col-lg-8 aos-init" data-aos="fade-right" data-aos-delay="100">
+            <div class="booking-section">
+              <h3>Cómo comenzar</h3>
+
+              <div class="availability-info">
+                <div class="info-item">
+                  <i class="bi bi-telephone"></i>
+                  <div>
+                    <strong>Comunicate</strong>
+                    <span>a través de una de nuestras vías de contacto.</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="bi bi-people"></i>
+                  <div>
+                    <strong>Coordinamos</strong>
+                    <span>un primer encuentro sin cargo para conocernos. Puede ser virtual o presencial.</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="bi bi-heart"></i>
+                  <div>
+                    <strong>Acordamos</strong>
+                    <span>los próximos pasos hacia el camino de transformación.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 aos-init" data-aos="fade-left" data-aos-delay="200">
+            <div class="appointment-card">
+
+              <h5>Creemos que el proceso terapéutico es un camino de transformación, y estamos acá para acompañarlos.</h5>
+              
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="section-acompanamiento" class="service-details-2 section unidad-content" >
+
+      <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
+            <div class="service-image">
+              <img src="assets/img/health/cardiology-3.webp" alt="Cardiology Services" class="img-fluid">
+             </div>
+          </div>
+
+          <div class="col-lg-6 aos-init aos-animate" data-aos="fade-left" data-aos-delay="300">
+            <div class="service-content">
+              <h2>Unidad de Acompañamiento Terapéutico</h2>
+              <p class="service-tagline">Advanced heart care with cutting-edge technology and compassionate expertise</p>
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+              <div class="service-actions">
+                <a href="#" class="btn-primary">Schedule Consultation</a>
+                <a href="#" class="btn-secondary">Learn More</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card">
+              <div class="card-icon">
+                <i class="bi bi-heart-pulse"></i>
+              </div>
+              <h4>Diagnostic Testing</h4>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+              <a href="#" class="card-link">
+                <span>Book Now</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card">
+              <div class="card-icon">
+                <i class="bi bi-hospital"></i>
+              </div>
+              <h4>Surgical Procedures</h4>
+              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque.</p>
+              <a href="#" class="card-link">
+                <span>Schedule Surgery</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card">
+              <div class="card-icon">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <h4>Preventive Care</h4>
+              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <a href="#" class="card-link">
+                <span>Get Screened</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-8 aos-init" data-aos="fade-right" data-aos-delay="100">
+            <div class="booking-section">
+              <h3>Ready to Schedule Your Appointment?</h3>
+              <p>Our cardiology specialists are available for consultations Monday through Friday. Same-day appointments available for urgent cases.</p>
+
+              <div class="availability-info">
+                <div class="info-item">
+                  <i class="bi bi-clock"></i>
+                  <div>
+                    <strong>Office Hours</strong>
+                    <span>Mon-Fri: 8:00 AM - 6:00 PM</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="bi bi-telephone"></i>
+                  <div>
+                    <strong>Emergency Line</strong>
+                    <span>+1 (555) 123-4567</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="bi bi-geo-alt"></i>
+                  <div>
+                    <strong>Location</strong>
+                    <span>123 Medical Center Dr, Boston, MA 02101</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 aos-init" data-aos="fade-left" data-aos-delay="200">
+            <div class="appointment-card">
+              <h4>Book Your Visit</h4>
+              <p>Quick and easy online scheduling</p>
+              <a href="appointment.html" class="btn-appointment">Book Appointment</a>
+              <div class="contact-alternative">
+                <span>Or call us at</span>
+                <a href="tel:+15551234567">+1 (555) 123-4567</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="section-psicoeducativa" class="service-details-2 section unidad-content" >
+
+      <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
+            <div class="service-image">
+              <img src="assets/img/health/cardiology-3.webp" alt="Cardiology Services" class="img-fluid">
+             </div>
+          </div>
+
+          <div class="col-lg-6 aos-init aos-animate" data-aos="fade-left" data-aos-delay="300">
+            <div class="service-content">
+              <h2>Unidad Psicoeducativa</h2>
+              <p class="service-tagline">Advanced heart care with cutting-edge technology and compassionate expertise</p>
+
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+              <div class="service-actions">
+                <a href="#" class="btn-primary">Schedule Consultation</a>
+                <a href="#" class="btn-secondary">Learn More</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card">
+              <div class="card-icon">
+                <i class="bi bi-heart-pulse"></i>
+              </div>
+              <h4>Diagnostic Testing</h4>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+              <a href="#" class="card-link">
+                <span>Book Now</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card">
+              <div class="card-icon">
+                <i class="bi bi-hospital"></i>
+              </div>
+              <h4>Surgical Procedures</h4>
+              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque.</p>
+              <a href="#" class="card-link">
+                <span>Schedule Surgery</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card">
+              <div class="card-icon">
+                <i class="bi bi-shield-check"></i>
+              </div>
+              <h4>Preventive Care</h4>
+              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <a href="#" class="card-link">
+                <span>Get Screened</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row mt-5">
+
+          <div class="col-lg-8 aos-init" data-aos="fade-right" data-aos-delay="100">
+            <div class="booking-section">
+              <h3>Ready to Schedule Your Appointment?</h3>
+              <p>Our cardiology specialists are available for consultations Monday through Friday. Same-day appointments available for urgent cases.</p>
+
+              <div class="availability-info">
+                <div class="info-item">
+                  <i class="bi bi-clock"></i>
+                  <div>
+                    <strong>Office Hours</strong>
+                    <span>Mon-Fri: 8:00 AM - 6:00 PM</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="bi bi-telephone"></i>
+                  <div>
+                    <strong>Emergency Line</strong>
+                    <span>+1 (555) 123-4567</span>
+                  </div>
+                </div>
+                <div class="info-item">
+                  <i class="bi bi-geo-alt"></i>
+                  <div>
+                    <strong>Location</strong>
+                    <span>123 Medical Center Dr, Boston, MA 02101</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 aos-init" data-aos="fade-left" data-aos-delay="200">
+            <div class="appointment-card">
+              <h4>Book Your Visit</h4>
+              <p>Quick and easy online scheduling</p>
+              <a href="appointment.html" class="btn-appointment">Book Appointment</a>
+              <div class="contact-alternative">
+                <span>Or call us at</span>
+                <a href="tel:+15551234567">+1 (555) 123-4567</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!--------------------------- 5 -->
 
     <section id="servicios-destacados" class="call-to-action section light-background">
 
@@ -429,7 +892,7 @@
                 </custom-span></p>
 
                <div class="action-buttons">
-                  <a href="" class="primary-btn">Solicitar Servicio</a>
+                  <a href="#contact" class="primary-btn">Solicitar Servicio</a>
                   <a href="#services-grid" class="secondary-link">
                     <span>Todos los Servicios</span>
                     <i class="fas fa-arrow-right"></i>
@@ -455,7 +918,7 @@
                 </div>
                 <h4 style="font-weight: 600; font-size: 16px;">Terapia psicológica para adultos</h4>
                 <p>Atención individual para ansiedad, depresión, estrés, crisis vitales y dificultades emocionales.</p>
-                <a  class="service-link">Solicitar información</a>
+                <a href="#contact" class="service-link">Solicitar información</a>
               </div>
             </div>
 
@@ -466,7 +929,7 @@
                 </div>
                 <h4 style="font-weight: 600; font-size: 16px;">Tecnología digital</h4>
                 <p>Realidad virtual para las fobias, simulador de manejo de auto para conductores, biofeedback para el tratamiento de trastornos psicofísicos.</p>
-                <a href="index.html" class="service-link">Solicitar información</a>
+                <a href="#contact" class="service-link">Solicitar información</a>
               </div>
             </div>
 
@@ -477,7 +940,7 @@
                 </div>
                 <h4 style="font-weight: 600; font-size: 16px;">Acompañamiento terapéutico</h4>
                 <p>Apoyo profesional en la vida cotidiana para favorecer la autonomía, el bienestar emocional y la continuidad del tratamiento.</p>
-                <a href="index.html" class="service-link">Solicitar información</a>
+                <a href="#contact" class="service-link">Solicitar información</a>
               </div>
             </div>
 
@@ -488,7 +951,7 @@
                 </div>
                 <h4 style="font-weight: 600; font-size: 16px;">Atención en adicciones</h4>
                 <p> Abordaje integral de consumos problemáticos y procesos de recuperación, con acompañamiento al paciente y su familia.</p>
-                <a href="index.html" class="service-link">Solicitar información</a>
+                <a href="#contact" class="service-link">Solicitar información</a>
               </div>
             </div>
 
@@ -499,7 +962,7 @@
                 </div>
                 <h4 style="font-weight: 600; font-size: 16px;">Tratamiento de la ludopatía</h4>
                 <p>Intervención psicológica especializada en juego compulsivo y otras adicciones conductuales.</p>
-                <a href="index.html" class="service-link">Solicitar información</a>
+                <a href="#contact" class="service-link">Solicitar información</a>
               </div>
             </div>
 
@@ -510,7 +973,7 @@
                 </div>
                 <h4 style="font-weight: 600; font-size: 16px">Atención a crisis y alta exigencia emocional</h4>
                 <p> Abordaje de experiencias traumáticas, pérdidas, accidentes, migración y eventos críticos.</p>
-                <a href="index.html" class="service-link">Solicitar información</a>
+                <a href="#contact" class="service-link">Solicitar información</a>
               </div>
             </div>
 
@@ -521,7 +984,7 @@
                 </div>
                 <h4 style="font-weight: 600; font-size: 16px">Integración escolar de personas con discapacidad</h4>
                 <p> Acompañamiento para la inclusión educativa, articulando familia, escuela y equipo de salud.</p>
-                <a href="index.html" class="service-link">Solicitar información</a>
+                <a href="#contact" class="service-link">Solicitar información</a>
               </div>
             </div>
 
@@ -532,7 +995,7 @@
                 </div>
                 <h4 style="font-weight: 600; font-size: 16px">Cuidados domiciliarios y asistencia personal</h4>
                 <p>Apoyo en el hogar para personas mayores o con pérdida de autonomía, con foco en el bienestar integral.</p>
-                <a href="index.html" class="service-link">Solicitar información</a>
+                <a href="#contact" class="service-link">Solicitar información</a>
               </div>
             </div>
 
@@ -543,7 +1006,7 @@
                 </div>
                 <h4 style="font-weight: 600; font-size: 16px">Grupos y talleres de educación emocional</h4>
                 <p>Espacios grupales para fortalecer recursos emocionales, vínculos y calidad de vida.</p>
-                <a href="index.html" class="service-link">Solicitar información</a>
+                <a href="#contact" class="service-link">Solicitar información</a>
               </div>
             </div>
 
@@ -628,7 +1091,216 @@
 
     </section>
 
-    <div class="heading mt-2">
+    <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 class="heading-title">Nuestro Equipo</h1>
+              <p class="mb-0">
+                Somos un grupo de profesionales de la salud mental comprometidos con el cuidado integral de las personas, las
+                familias y las comunidades. En Teacompañamos, trabajamos de forma interdisciplinaria, combinando la experiencia
+                de psicólogos, psicopedagogos, trabajadores sociales, acompañantes terapéuticos, cuidadores domiciliarios y otros
+                especialistas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <section id="about-us" class="doctors section">
+
+      <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
+       <!-- Single Doctor Profile -->
+        <div class="single-profile mt-5">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-3 aos-init aos-animate" data-aos="fade-right" data-aos-delay="150">
+              <div class="profile-media">
+                <img src="assets/img/health/director.png" class="img-fluid" alt="Dr. Natalia Rivera">
+              </div>
+            </div>
+            <div class="col-lg-9 aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
+              <div class="profile-content">
+                
+                <h3 class="name mb-2 mt-2">Mg. Hugo Amengual</h3>
+                <p class="title mb-3" style="color:#022647; font-weight:600; font-size: large;">Director</p>
+                <p class="bio mb-3 mt-3">Magíster en Psicología. Psicólogo con más de 30 años de trayectoria en el ámbito de la salud mental,
+                  con experiencia en instituciones públicas y privadas dedicadas a la atención, la docencia y la formación profesional. Es fundador y
+                  director de Postgrados de Psicología (PdP), un centro virtual de formación continua para psicólogos iberoamericanos, y director
+                  de TeAcompañamos, proyecto que impulsa un enfoque interdisciplinario y accesible en el cuidado de la salud mental,
+                  tanto en formato presencial como virtual. Su labor se centra en promover espacios de apoyo profesional, innovación y
+                  cercanía, orientados al bienestar emocional de las personas, las familias y las comunidades del sur de Argentina y de
+                  países de habla hispana.</p>
+                
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                  <span class="badge role">Magíster en Psicología</span>
+                  <span class="badge years">+30 años de trayectoria</span>
+                  <span class="badge cert">CEO Fundador TeAcompañamos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Single Doctor Profile -->
+
+        <div class="team-info">
+
+      <div class="team-avatar">
+        <img src="assets/img/health/profesionales.png" alt="Equipo profesional">
+      </div>
+
+      <div class="team-content">
+
+        <div class="team-column">
+          <h3>Supervisores</h3>
+          <p>Julieta Tomatis – Lic. en Psicología</p>
+          <p>Mariela Rico – Lic. en Psicología</p>
+          <p>Ana Laura Rico – Lic. en Trabajo Social</p>
+
+          <h3 class="mt-4">Administración</h3>
+          <p>Evangelina Amengual</p>
+        </div>
+
+        <div class="team-column">
+          <h3>RRHH</h3>
+          <p>Juliana Kloster</p>
+
+          <h3 class="mt-4">Redes Sociales y Campus Virtual</h3>
+          <p>Matías Villegas</p>
+        </div>
+
+      </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="mission-vision">
+
+  <!-- Nuestra misión -->
+  <div class="mv-row">
+    <div class="mv-image">
+      <img src="assets/img/health/mision.png" alt="Ilustración misión">
+    </div>
+
+    <div class="mv-text">
+      <h2>Nuestra misión</h2>
+      <p>
+        Brindar servicios de salud mental y apoyo psicológico de calidad
+        adaptados a las necesidades de cada persona y comunidad.
+      </p>
+      <p>
+        Nos enfocamos en ofrecer un espacio de <strong>escucha, contención y orientación</strong>,
+        tanto presencial como virtual, que contribuya al bienestar y a la
+        resiliencia emocional.
+      </p>
+    </div>
+  </div>
+
+  <!-- Nuestra visión -->
+  <div class="mv-row reverse">
+    <div class="mv-image">
+      <img src="assets/img/health/vision.png" alt="Ilustración visión">
+    </div>
+
+    <div class="mv-text">
+      <h2>Nuestra visión</h2>
+      <p>
+        Construir una sociedad más <strong>consciente, empática y solidaria</strong>,
+        donde el acceso a la salud mental sea un derecho garantizado y no un privilegio.
+      </p>
+      <p>
+        Queremos ser referentes en el diseño de <strong>servicios innovadores y confiables</strong>
+        que acompañen a las personas en sus diferentes etapas de vida y en contextos
+        de alta exigencia emocional.
+      </p>
+    </div>
+  </div>
+
+  <!-- Nuestros valores -->
+  <div class="mv-row">
+    <div class="mv-image">
+      <img src="assets/img/health/valores.png" alt="Ilustración valores">
+    </div>
+
+    <div class="mv-text">
+      <h2>Nuestros valores</h2>
+      <ul class="values-list">
+        <li><strong>Compromiso humano:</strong> acompañamos con empatía, respeto y sensibilidad.</li>
+        <li><strong>Profesionalismo:</strong> trabajamos con equipos especializados en distintas áreas de la salud mental.</li>
+        <li><strong>Accesibilidad:</strong> buscamos que el apoyo psicológico llegue a todas las personas que lo necesitan.</li>
+        <li><strong>Confidencialidad:</strong> garantizamos un espacio seguro, ético y de confianza.</li>
+        <li><strong>Colaboración:</strong> creemos en el trabajo en red con profesionales, instituciones y comunidades.</li>
+      </ul>
+    </div>
+  </div>
+
+    </section>
+
+    <section id="social-media" class="about section">
+
+      <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="intro-section">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+              <h2>Redes Sociales</h2>
+              <p class="lead">A través de nuestros canales digitales generamos espacios de divulgación, orientación y diálogo, tanto para personas
+como para familias e instituciones. </p>
+            </div>
+          </div>
+        </div>
+
+     
+
+        <div class="specialties-section aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
+          <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+              <div class="specialty-item">
+                <i class="bi bi-youtube"></i>
+                <span>Canal de Youtube</span>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="150">
+              <div class="specialty-item">
+                <i class="bi bi-wifi"></i>
+                <span>Visitar Blog</span>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+              <div class="specialty-item">
+                <i class="bi bi-instagram"></i>
+                <span>instagram</span>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="250">
+              <div class="specialty-item">
+                <i class="bi bi-browser-edge"></i>
+                <span>Sitio Web</span>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+              <div class="specialty-item">
+                <i class="bi bi-facebook"></i>
+                <span>Facebook</span>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="350">
+              <div class="specialty-item">
+                <i class="bi bi-linkedin"></i>
+                <span>Linkedin</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </section>
+
+    <div class="heading">
         <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
@@ -649,7 +1321,7 @@
           <!-- Appointment Info (SE DEJA TAL CUAL) -->
           <div class="col-lg-6">
             <div class="appointment-info">
-              <h3>Estamos para acompañarte</h3>
+              <h4>Estamos para acompañarte</h4>
               <p class="mb-4">
                 Juntos podemos encontrar el tipo de acompañamiento que mejor se adapte a tus necesidades o la de tu ser cercano.
               </p>
@@ -682,7 +1354,7 @@
                   </div>
                   <div>
                     <h5>Correo electrónico</h5>
-                    <p class="mb-0">contacto@teacompañamos.com</p>
+                    <p class="mb-0">info@teacompañamos.com</p>
                   </div>
                 </div>
 
@@ -810,11 +1482,11 @@
           </a>
 
           <div class="social-links d-flex gap-2 mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-            <a href=""><i class="bi bi-youtube"></i></a>
+            <!-- <a href=""><i class="bi bi-twitter-x"></i></a> -->
+            <a href="https://www.facebook.com/acompanamientoterapeuticobb" target="_blank" rel="noopener"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/te.acompanamos/" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/teacompa%C3%B1amos/" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+            <a href="http://www.youtube.com/@teacompanamos" target="_blank" rel="noopener"><i class="bi bi-youtube"></i></a>
           </div>
 
         </div>
@@ -825,7 +1497,7 @@
           <ul>
             <li><a href="#featured-departments">Unidades de atención</a></li>
             <li><a href="#servicios-destacados">Servicios</a></li>
-            <li><a href="#home-about">Nosotros</a></li>
+            <li><a href="#about-us">Nosotros</a></li>
             <li><a href="index.html">Contacto</a></li>
           </ul>
         </div>
@@ -870,6 +1542,8 @@
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <!-- <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script> -->
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
@@ -1004,7 +1678,49 @@
   });
 </script>
 
+<script>
+function mostrarUnidad(sectionId) {
 
+  /* 1. Ocultar todas las secciones */
+  document.querySelectorAll('.unidad-content').forEach(sec => {
+    sec.classList.remove('active');
+    sec.style.display = 'none';
+  });
 
+  /* 2. Mostrar sección activa */
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.style.display = 'block';
+    section.classList.add('active');
+  }
+
+  /* ====== CALCULAR ID BASE ====== */
+  // section-asistencia → asistencia
+  const key = sectionId.replace('section-', '');
+
+  /* 3. Resetear tabs */
+  document
+    .querySelectorAll('.gallery .isotope-filters li')
+    .forEach(tab => tab.classList.remove('filter-active'));
+
+  /* 4. Activar tab correcto */
+  const activeTab = document.getElementById(`tab-${key}`);
+  activeTab?.classList.add('filter-active');
+
+  /* 5. Resetear botones */
+  document
+    .querySelectorAll('.service-btn')
+    .forEach(btn => btn.classList.remove('active'));
+
+  /* 6. Activar botón correcto */
+  const activeBtn = document.getElementById(`service-btn-${key}`);
+  activeBtn?.classList.add('active');
+
+  /* 7. Scroll suave */
+  document
+    .querySelector('#gallery')
+    ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
 
 </body></html>

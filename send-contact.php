@@ -38,15 +38,15 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.hostinger.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'administracion@psicomedios.com.ar';
-    $mail->Password   = 'px56dKLPf3HgJEF#';
+    $mail->Username   = 'info@teacompanamos.com.ar';
+    $mail->Password   = 'lH$t/a&4^';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = 465;
 
     $mail->CharSet = 'UTF-8';
 
-    $mail->setFrom('administracion@psicomedios.com.ar', 'Web');
-    $mail->addAddress('administracion@psicomedios.com.ar');
+    $mail->setFrom('info@teacompanamos.com.ar', 'Web');
+    $mail->addAddress('info@teacompanamos.com.ar');
     $mail->addReplyTo($email, $name);
 
     $mail->Subject = $subject;

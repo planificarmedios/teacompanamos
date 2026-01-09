@@ -60,16 +60,7 @@
     });
   });
 
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
-
+ 
   /**
    * Scroll top button
    */
@@ -190,3 +181,15 @@ window.addEventListener('load', aosInit);
   });
 
 })();
+
+window.addEventListener('load', () => {
+
+  /* =====================
+     Preloader
+  ====================== */
+  const preloader = document.querySelector('#preloader');
+  if (preloader) {
+    preloader.remove();
+  }
+
+});

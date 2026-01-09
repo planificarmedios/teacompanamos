@@ -2647,7 +2647,7 @@ section,
 # About Section
 --------------------------------------------------------------*/
 .about {
-  padding: 120px 0;
+  padding: 1px 0;
 }
 
 .about .intro-section {
@@ -2948,7 +2948,7 @@ section,
 
 @media (max-width: 992px) {
   .about {
-    padding: 80px 0;
+    padding: 5px 0;
   }
 
   .about .intro-section {
@@ -4022,6 +4022,7 @@ section,
 }
 
 .service-details-2 .service-image img {
+  border-color: #021418;
   border-radius: 15px;
 }
 
@@ -4696,14 +4697,6 @@ section,
 .doctors .compact-view .minimal-card .info small {
   color: var(--muted);
   font-weight: 600;
-}
-
-.doctors .profile-tabs .tab-profile-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  padding: 14px;
-  box-shadow: var(--shadow);
 }
 
 .doctors .profile-tabs .tab-profile-card img {
@@ -7153,3 +7146,285 @@ custom-span {
   padding-top: 25px;   /* probá 40 / 32 si querés más compacto */
   padding-bottom: 60px;
 }
+
+#about-us .row {
+  align-items: stretch;
+}
+
+.doctors .profile-tabs .tab-profile-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+
+/* Contenedor de la imagen */
+.avatar-wrapper {
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+/* Imagen avatar */
+.avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Badges */
+.badge.cert {
+  background-color: #0d6efd;
+}
+
+.badge.years {
+  background-color: #198754;
+}
+
+.team-info {
+  display: flex;
+  gap: 5rem;
+  background: #ffffff;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  align-items: center;
+}
+
+/* Avatar */
+.team-avatar {
+  flex-shrink: 0;
+  width: 220px;
+  height: 220px;
+  background: #ffffff;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Contenido */
+.team-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+/* Columnas */
+.team-column h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #022647;
+  margin-bottom: 0.75rem;
+}
+
+.team-column p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .team-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .team-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.mission-vision {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* Filas */
+.mv-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Alternar imagen / texto */
+.mv-row.reverse {
+  direction: rtl;
+}
+
+.mv-row.reverse > * {
+  direction: ltr;
+}
+
+/* Imágenes */
+.mv-image img {
+  width: 100%;
+  max-width: 360px;
+  display: block;
+}
+
+/* Texto */
+.mv-text h2 {
+  color: #022647;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.mv-text p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+/* Lista de valores */
+.values-list {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.values-list li {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .mv-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .mv-image img {
+    margin: 0 auto;
+  }
+
+  .values-list {
+    text-align: left;
+  }
+}
+
+.unidad-content {
+  display: none;
+}
+
+.unidad-content.active {
+  display: block;
+}
+
+.units-tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.units-tabs .tab {
+  padding: 12px 0;
+  cursor: pointer;
+  font-weight: 500;
+  color: #64748b;
+  position: relative;
+}
+
+.units-tabs .tab.active {
+  color: #16a34a;
+}
+
+.units-tabs .tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #16a34a;
+}
+
+
+.unidad-content {
+  display: none;
+}
+
+.unidad-content.active {
+  display: block;
+}
+
+.gallery .isotope-filters li.filter-active {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.service-btn.active {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.gallery .isotope-filters li.filter-active {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.service-btn.active {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+#gallery.section {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.service-card ul {
+  padding-left: 1.2rem;   /* sangría correcta de lista */
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  text-align: left;       /* clave: evita centrado */
+}
+
+.service-card ul li {
+  text-align: left;
+}
+
+.appointment-card {
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centra verticalmente */
+  text-align: left;          /* o center si lo preferís */
+}
+
+.appointment-card h5 {
+  margin: 0;
+  line-height: 1.6;
+}
+
