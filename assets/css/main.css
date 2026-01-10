@@ -4289,7 +4289,7 @@ section,
 
 .service-details-2 .appointment-card .contact-alternative {
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 
 .service-details-2 .appointment-card .contact-alternative span {
@@ -4298,10 +4298,10 @@ section,
   margin-bottom: 0.3rem;
 }
 
-.service-details-2 .appointment-card .contact-alternative a {
+.service-details-2 .appointment-card .contact-alternative {
   color: var(--accent-color);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 .service-details-2 .appointment-card .contact-alternative a:hover {
@@ -7427,4 +7427,9 @@ custom-span {
   margin: 0;
   line-height: 1.6;
 }
+
+#social-media {
+  padding-top: 40px;
+}
+
 
