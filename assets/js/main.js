@@ -227,19 +227,6 @@ function stopButtonLoading(button) {
   loader && loader.classList.add('d-none');
 }
 
-
-function openServiceModal(button, email) {
-
-  const card = button.closest('.service-card');
-  const title = card.querySelector('h4').innerText;
-
-  document.getElementById('serviceSubject').value = title;
-  document.getElementById('serviceTo').value = email;
-
-  const modalEl = document.getElementById('serviceModal');
-  bootstrap.Modal.getOrCreateInstance(modalEl).show();
-}
-
 document.addEventListener('DOMContentLoaded', () => {
 
   // CONTACTO → spinner en botón
@@ -345,5 +332,23 @@ function setButtonLoading(button, isLoading) {
   if (!button) return;
   button.classList.toggle('loading', isLoading);
 }
+
+function openServiceModal(button, email) {
+
+  // 🔥 IMPORTANTE: quitar foco táctil
+  button.blur();
+
+  const card = button.closest('.service-card');
+  const title = card.querySelector('h4').innerText;
+
+  document.getElementById('serviceSubject').value = title;
+  document.getElementById('serviceTo').value = email;
+
+  const modalEl = document.getElementById('serviceModal');
+  const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+
+  modal.show();
+}
+
 
 
