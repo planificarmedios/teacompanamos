@@ -333,9 +333,9 @@ function setButtonLoading(button, isLoading) {
   button.classList.toggle('loading', isLoading);
 }
 
-function openServiceModal(button, email) {
+window.openServiceModal = function (button, email) {
 
-  // 🔥 IMPORTANTE: quitar foco táctil
+  // quitar foco (mobile)
   button.blur();
 
   const card = button.closest('.service-card');
@@ -346,9 +346,5 @@ function openServiceModal(button, email) {
 
   const modalEl = document.getElementById('serviceModal');
   const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
-
   modal.show();
-}
-
-
-
+};
