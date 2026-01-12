@@ -193,3 +193,157 @@ window.addEventListener('load', () => {
   }
 
 });
+
+function startButtonLoading(button) {
+  if (!button) return;
+
+  const text = button.querySelector('.btn-text');
+  const loader = button.querySelector('.btn-loading');
+
+  button.disabled = true;
+
+  if (button.dataset.loadingText && text) {
+    text.dataset.originalText = text.innerText;
+    text.innerText = button.dataset.loadingText;
+  }
+
+  text && text.classList.add('d-none');
+  loader && loader.classList.remove('d-none');
+}
+
+function stopButtonLoading(button) {
+  if (!button) return;
+
+  const text = button.querySelector('.btn-text');
+  const loader = button.querySelector('.btn-loading');
+
+  button.disabled = false;
+
+  if (text?.dataset.originalText) {
+    text.innerText = text.dataset.originalText;
+  }
+
+  text && text.classList.remove('d-none');
+  loader && loader.classList.add('d-none');
+}
+
+
+function openServiceModal(button, email) {
+
+  const card = button.closest('.service-card');
+  const title = card.querySelector('h4').innerText;
+
+  document.getElementById('serviceSubject').value = title;
+  document.getElementById('serviceTo').value = email;
+
+  const modalEl = document.getElementById('serviceModal');
+  bootstrap.Modal.getOrCreateInstance(modalEl).show();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // CONTACTO → spinner en botón
+  initAjaxForm({
+    formId: 'contactForm',
+    successText: 'Mensaje enviado correctamente. Gracias ✅',
+    useSpinner: true
+  });
+
+  // SERVICIOS → sin spinner
+  initAjaxForm({
+    formId: 'serviceForm',
+    successText: 'Solicitud enviada correctamente ✅',
+    onSuccess: () => {
+      const modalEl = document.getElementById('serviceModal');
+      bootstrap.Modal.getInstance(modalEl)?.hide();
+    }
+  });
+
+});
+
+function initAjaxForm({
+  formId,
+  successText,
+  errorText = 'Error al enviar ❌',
+  onSuccess = null,
+  useSpinner = false,
+  spinnerButtonSelector = '.btn-spinner'
+}) {
+  
+  const form = document.getElementById(formId);
+  if (!form || form.dataset.ajaxInit === 'true') return;
+
+  form.dataset.ajaxInit = 'true';
+
+  const submitBtn = form.querySelector(spinnerButtonSelector);
+ 
+  form.addEventListener('submit', function (e) {
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    if (useSpinner) {
+      startButtonLoading(submitBtn);
+    }
+
+    const formData = new FormData(form);
+
+    fetch(form.action, {
+      method: form.method || 'POST',
+      body: formData
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Network error');
+        return res.json();
+      })
+      .then(data => {
+
+        if (!data.success) {
+          throw new Error(data.message || 'Error');
+        }
+
+        Toastify({
+          text: successText,
+          duration: 4000,
+          gravity: "top",
+          position: "right",
+          close: true,
+          backgroundColor: "#28a745"
+        }).showToast();
+
+        form.reset();
+
+        if (typeof onSuccess === 'function') {
+          onSuccess();
+        }
+
+      })
+      .catch(err => {
+
+        Toastify({
+          text: errorText,
+          duration: 4000,
+          gravity: "top",
+          position: "right",
+          close: true,
+          backgroundColor: "#dc3545"
+        }).showToast();
+
+        console.error(err);
+      })
+      .finally(() => {
+        if (useSpinner) {
+          stopButtonLoading(submitBtn);
+        }
+      });
+
+    return false;
+  });
+}
+
+function setButtonLoading(button, isLoading) {
+  if (!button) return;
+  button.classList.toggle('loading', isLoading);
+}
+
+

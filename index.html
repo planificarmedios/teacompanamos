@@ -29,7 +29,7 @@
 
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=13.0" rel="stylesheet">
+  <link href="assets/css/main.css?v=14.0" rel="stylesheet">
 
 
 </head>
@@ -462,9 +462,9 @@
                   la comodidad del hogar, el vínculo terapéutico se sostiene con profesionalismo, calidez y
                   compromiso.</p>
 
-                <div class="service-actions">
+               <!--  <div class="service-actions">
                   <a href="#contact" class="btn-primary">Consultar</a>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -642,9 +642,9 @@
                   tratamiento en un entorno seguro y familiar.
                 </p>
 
-                <div class="service-actions">
+                <!-- <div class="service-actions">
                   <a href="#contact" class="btn-primary">Consultar</a>
-                </div>
+                </div> -->
 
               </div>
             </div>
@@ -655,7 +655,8 @@
             <div class="container">
               <!-- FILA 1: 3 CARDS -->
               <div class="row mb-4">
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+
+              <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                   <div class="service-card h-100">
                     <h4>Acompañamiento Terapéutico para Jóvenes y Adultos <span>(SAT18+)</span></h4>
                     <p>Acompañamiento terapéutico para personas mayores de 18 años que atraviesan dificultades
@@ -670,8 +671,9 @@
                       <li>Supervisión profesional permanente.</li>
                     </ul>
                   </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                   <div class="service-card h-100">
                     <h4>Acompañamiento Domiciliario para Niños y Adolescentes <span>(SADENA)</span></h4>
                     <p>Servicio terapéutico destinado a niños
@@ -687,9 +689,18 @@
                       <li>ATS especializadas en niñez y adolescencia.</li>
                       <li>Objetivos terapéuticos claros y trabajo en equipo.</li>
                     </ul>
+                    <div class="service-actions">
+                      <button
+                        type="button"
+                        class="btn-consultar"
+                        onclick="openServiceModal(this, 'presupuesto@teacompanamos.com.ar')">
+                        Consultar Servicio
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+              </div>
+
+              <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                   <div class="service-card h-100">
                     <h4>Integración Escolar para Personas con Discapacidad <span>(SIED)</span></h4>
                     <p>Servicio integral que acompaña el
@@ -707,7 +718,6 @@
                       <li>Comunicación permanente con la institución.</li>
                     </ul>
                   </div>
-                </div>
               </div>
 
               <!-- FILA 2: 3 CARDS -->
@@ -723,6 +733,7 @@
                     </ul>
                   </div>
                 </div>
+
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                   <div class="service-card h-100">
                     <h4>Cuidados Domiciliarios y Asistencia Personal <span>(CD)</span></h4>
@@ -805,9 +816,9 @@
                   incluido el AMBA mediante recursos tecnológicos que permiten una participación accesible y
                   continua.</p>
 
-               <div class="service-actions">
+              <!--  <div class="service-actions">
                   <a href="#contact" class="btn-primary">Consultar</a>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -946,7 +957,7 @@
               </div>
               <div class="col-lg-6">
                 <div class="hero-image" data-aos="zoom-in" data-aos-delay="300">
-                  <img src="assets/img/health/header.webp" alt="Healthcare Excellence" class="img-fluid">
+                  <img src="assets/img/health/asist.jpg" alt="Healthcare Excellence" class="img-fluid">
                 </div>
               </div>
             </div>
@@ -1422,8 +1433,7 @@
             <div class="col-lg-6">
               <div class="appointment-form-wrapper" data-aos="fade-up" data-aos-delay="200" id="divForm">
 
-                <form action="send-contact.php" id="contactForm" method="post" enctype="multipart/form-data"
-                  class="php-email-form">
+                <form action="send-contact.php" id="contactForm" method="post" enctype="multipart/form-data" class="php-email-form">
 
                   <div class="row gy-3">
 
@@ -1459,8 +1469,13 @@
                         Your message has been sent. Thank you!
                       </div>
 
-                      <button type="submit" class="btn btn-appointment">
-                        Enviar consulta
+                      <button type="submit"
+                              class="btn btn-appointment btn-spinner"
+                              data-loading-text="Enviando...">
+                        <span class="btn-text">Enviar consulta</span>
+                        <span class="btn-loading d-none">
+                          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        </span>
                       </button>
                     </div>
 
@@ -1562,66 +1577,6 @@
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="assets/js/main.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-
-      const form = document.getElementById('contactForm');
-
-      form.addEventListener('submit', function (e) {
-        e.preventDefault(); // evita redirección
-
-        const loading = form.querySelector('.loading');
-        const errorMessage = form.querySelector('.error-message');
-        const sentMessage = form.querySelector('.sent-message');
-
-        loading.style.display = 'block';
-        errorMessage.style.display = 'none';
-        sentMessage.style.display = 'none';
-
-        const formData = new FormData(form);
-
-        fetch(form.action, {
-          method: 'POST',
-          body: formData
-        })
-          .then(response => response.json())
-          .then(data => {
-            loading.style.display = 'none';
-
-            if (data.success) {
-              // limpiar inputs
-              form.reset();
-
-              // toast de éxito
-              Toastify({
-                text: "Mensaje enviado correctamente. Gracias ✅ Te responderemos la brevedad.",
-                duration: 4000,
-                gravity: "top",
-                position: "right",
-                close: true,
-                backgroundColor: "#28a745"
-              }).showToast();
-
-            } else {
-              throw new Error(data.message || 'Error al enviar');
-            }
-          })
-          .catch(error => {
-            loading.style.display = 'none';
-
-            Toastify({
-              text: "Error al enviar el mensaje ❌",
-              duration: 4000,
-              gravity: "top",
-              position: "right",
-              close: true,
-              backgroundColor: "#dc3545"
-            }).showToast();
-          });
-      });
-
-    });
-  </script>
 
   <!-- WhatsApp Floating Widget -->
   <div class="whatsapp-container">
@@ -1732,6 +1687,120 @@
     }
   </script>
 
-</body>
+  <script>
+    
+  let serviceModal;
+  let serviceTo = '';
 
+  document.addEventListener('DOMContentLoaded', () => {
+    serviceModal = new bootstrap.Modal(
+      document.getElementById('serviceModal')
+    );
+  });
+
+  function openServiceModal(button, emailTo) {
+    const card = button.closest('.service-card');
+    const title = card.querySelector('h4')?.innerText.trim();
+
+    serviceTo = emailTo;
+
+    document.getElementById('serviceSubject').value = title;
+    document.getElementById('serviceTo').value = emailTo;
+    serviceModal.show();
+  }
+
+
+
+  </script>
+
+<div class="modal fade" id="serviceModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Solicitar servicio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form id="serviceForm" action="send-service.php" method="post" novalidate>
+
+        <div class="modal-body">
+
+          <!-- SUBJECT (solo lectura) -->
+          <div class="mb-3">
+            <label class="form-label">Servicio solicitado</label>
+            <input type="text" name="subject" id="serviceSubject"
+              class="form-control" readonly>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nombre RESPONSABLE *</label>
+              <input type="text" name="responsable" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nombre PACIENTE *</label>
+              <input type="text" name="paciente" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Domicilio y localidad *</label>
+            <input type="text" name="domicilio" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Obra Social</label>
+            <input type="text" name="obra_social" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Diagnóstico CUD</label>
+            <input type="text" name="diagnostico" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Descripción del requerimiento</label>
+            <textarea name="descripcion" class="form-control" rows="3"></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Correo electrónico</label>
+              <input type="email" name="email" class="form-control">
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Tel / WhatsApp</label>
+              <input type="tel" name="telefono" class="form-control">
+            </div>
+          </div>
+          <input type="hidden" name="to" id="serviceTo">
+
+        </div>
+
+        <div class="modal-footer">
+          <button
+              type="submit"
+              class="btn btn-appointment btn-spinner"
+              data-loading-text="Enviando...">
+
+              <span class="btn-text">Enviar consulta</span>
+
+              <span class="btn-loading d-none">
+                <span class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"></span>
+              </span>
+            </button>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+</body>
 </html>
