@@ -269,7 +269,7 @@ function initAjaxForm({
           text: "Enviando solicitud....",
           duration: 3000,
           gravity: "top",
-          position: "left",
+          position: "right",
           close: true,
           backgroundColor: "#999a45ff"
         }).showToast();
