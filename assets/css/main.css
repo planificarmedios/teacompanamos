@@ -7518,7 +7518,10 @@ custom-span {
 }
 
 
-
+.php-email-form--full {
+  max-width: 100%;
+  margin: 0;
+}
 
 
 

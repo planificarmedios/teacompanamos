@@ -265,6 +265,14 @@ function initAjaxForm({
   const submitBtn = form.querySelector(spinnerButtonSelector);
  
   form.addEventListener('submit', function (e) {
+    Toastify({
+          text: "Enviando solicitud....",
+          duration: 3000,
+          gravity: "top",
+          position: "left",
+          close: true,
+          backgroundColor: "#999a45ff"
+        }).showToast();
 
     e.preventDefault();
     e.stopImmediatePropagation();
@@ -284,7 +292,6 @@ function initAjaxForm({
         return res.json();
       })
       .then(data => {
-
         if (!data.success) {
           throw new Error(data.message || 'Error');
         }
@@ -333,18 +340,19 @@ function setButtonLoading(button, isLoading) {
   button.classList.toggle('loading', isLoading);
 }
 
-window.openServiceModal = function (button, email) {
-
-  // quitar foco (mobile)
-  button.blur();
-
+function openServiceModal(button, emailTo) {
   const card = button.closest('.service-card');
-  const title = card.querySelector('h4').innerText;
+  const title = card.querySelector('h4')?.innerText.trim();
 
-  document.getElementById('serviceSubject').value = title;
-  document.getElementById('serviceTo').value = email;
+  if (!title) return;
 
-  const modalEl = document.getElementById('serviceModal');
-  const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
-  modal.show();
-};
+  const params = new URLSearchParams({
+    service: title,
+    to: emailTo
+  });
+
+  window.location.href = `contact.html?${params.toString()}`;
+}
+
+
+
