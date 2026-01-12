@@ -313,7 +313,7 @@
 
     </section>
 
-    <section id="services" class="services section">
+    <section id="service-description" class="services section">
 
       <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
 
@@ -409,8 +409,7 @@
 
     </section>
 
-    <section id="gallery" class="gallery section">
-
+    <section id="gallery" class="gallery section">  
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div data-default-filter="*">
@@ -427,10 +426,11 @@
               onclick="mostrarUnidad('section-psicoeducativa')">
               Unidad Psicoeducativa
             </li>
+          </ul>
         </div>
 
       </div>
-
+    </section>
 
 
       <section id="section-asistencia" class="service-details-2 section unidad-content active">
@@ -1567,6 +1567,95 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
+  <div class="modal fade" id="serviceModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Solicitar servicio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form id="serviceForm" action="send-service.php" method="post" novalidate>
+
+        <div class="modal-body">
+
+          <!-- SUBJECT (solo lectura) -->
+          <div class="mb-3">
+            <label class="form-label">Servicio solicitado</label>
+            <input type="text" name="subject" id="serviceSubject"
+              class="form-control" readonly>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nombre RESPONSABLE *</label>
+              <input type="text" name="responsable" class="form-control" required>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nombre PACIENTE *</label>
+              <input type="text" name="paciente" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Domicilio y localidad *</label>
+            <input type="text" name="domicilio" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Obra Social</label>
+            <input type="text" name="obra_social" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Diagnóstico CUD</label>
+            <input type="text" name="diagnostico" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Descripción del requerimiento</label>
+            <textarea name="descripcion" class="form-control" rows="3"></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Correo electrónico</label>
+              <input type="email" name="email" class="form-control">
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Tel / WhatsApp</label>
+              <input type="tel" name="telefono" class="form-control">
+            </div>
+          </div>
+          <input type="hidden" name="to" id="serviceTo">
+
+        </div>
+
+        <div class="modal-footer">
+          <button
+              type="submit"
+              class="btn btn-appointment btn-spinner"
+              data-loading-text="Enviando...">
+
+              <span class="btn-text">Consultar</span>
+
+              <span class="btn-loading d-none">
+                <span class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"></span>
+              </span>
+            </button>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
@@ -1711,95 +1800,6 @@
 
 
   </script>
-
-<div class="modal fade" id="serviceModal" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <h5 class="modal-title">Solicitar servicio</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <form id="serviceForm" action="send-service.php" method="post" novalidate>
-
-        <div class="modal-body">
-
-          <!-- SUBJECT (solo lectura) -->
-          <div class="mb-3">
-            <label class="form-label">Servicio solicitado</label>
-            <input type="text" name="subject" id="serviceSubject"
-              class="form-control" readonly>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Nombre RESPONSABLE *</label>
-              <input type="text" name="responsable" class="form-control" required>
-            </div>
-
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Nombre PACIENTE *</label>
-              <input type="text" name="paciente" class="form-control" required>
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Domicilio y localidad *</label>
-            <input type="text" name="domicilio" class="form-control" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Obra Social</label>
-            <input type="text" name="obra_social" class="form-control">
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Diagnóstico CUD</label>
-            <input type="text" name="diagnostico" class="form-control">
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Descripción del requerimiento</label>
-            <textarea name="descripcion" class="form-control" rows="3"></textarea>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Correo electrónico</label>
-              <input type="email" name="email" class="form-control">
-            </div>
-
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Tel / WhatsApp</label>
-              <input type="tel" name="telefono" class="form-control">
-            </div>
-          </div>
-          <input type="hidden" name="to" id="serviceTo">
-
-        </div>
-
-        <div class="modal-footer">
-          <button
-              type="submit"
-              class="btn btn-appointment btn-spinner"
-              data-loading-text="Enviando...">
-
-              <span class="btn-text">Consultar</span>
-
-              <span class="btn-loading d-none">
-                <span class="spinner-border spinner-border-sm"
-                      role="status"
-                      aria-hidden="true"></span>
-              </span>
-            </button>
-
-        </div>
-      </form>
-
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
