@@ -29,7 +29,7 @@
 
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=20.0" rel="stylesheet">
+  <link href="assets/css/main.css?v=21.0" rel="stylesheet">
 
 
 </head>
@@ -484,7 +484,7 @@
                   </p>
 
                   <div class="action-buttons">
-                    <a href="" class="primary-btn">Solicitar información</a>
+                    <a href="#contact" class="primary-btn">Solicitar información</a>
                     <a href="#services-grid" class="secondary-link">
                       <span>Todos los Servicios</span>
                       <i class="fas fa-arrow-right"></i>
@@ -1044,51 +1044,6 @@
       widget.style.display = 'none';
     });
   </script>
-
-  <script>
-    function mostrarUnidad(sectionId) {
-
-      /* 1. Ocultar todas las secciones */
-      document.querySelectorAll('.unidad-content').forEach(sec => {
-        sec.classList.remove('active');
-        sec.style.display = 'none';
-      });
-
-      /* 2. Mostrar sección activa */
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.style.display = 'block';
-        section.classList.add('active');
-      }
-
-      /* ====== CALCULAR ID BASE ====== */
-            const key = sectionId.replace('section-', '');
-
-      /* 3. Resetear tabs */
-      document
-        .querySelectorAll('.gallery .isotope-filters li')
-        .forEach(tab => tab.classList.remove('filter-active'));
-
-      /* 4. Activar tab correcto */
-      const activeTab = document.getElementById(`tab-${key}`);
-      activeTab?.classList.add('filter-active');
-
-      /* 5. Resetear botones */
-      document
-        .querySelectorAll('.service-btn')
-        .forEach(btn => btn.classList.remove('active'));
-
-      /* 6. Activar botón correcto */
-      const activeBtn = document.getElementById(`service-btn-${key}`);
-      activeBtn?.classList.add('active');
-
-      /* 7. Scroll suave */
-      document
-        .querySelector('#gallery')
-        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  </script>
-
 
 </body>
 </html>
