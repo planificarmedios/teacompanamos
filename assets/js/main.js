@@ -340,19 +340,30 @@ function setButtonLoading(button, isLoading) {
   button.classList.toggle('loading', isLoading);
 }
 
-function openServiceModal(button, emailTo) {
-  const card = button.closest('.service-card');
-  const title = card.querySelector('h4')?.innerText.trim();
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('.btn-consultar');
+  if (!btn) return;
 
+  const card = btn.closest('.service-card');
+  if (!card) return;
+  console.log (card)
+  
+  const title = card.querySelector('h4')?.innerText.trim();
   if (!title) return;
+
+  const emailTo = btn.dataset.email || 'presupuesto@teacompanamos.com.ar';
 
   const params = new URLSearchParams({
     service: title,
     to: emailTo
   });
 
+  alert (params)
+
   window.location.href = `contact.html?${params.toString()}`;
-}
+});
+
+
 
 
 
