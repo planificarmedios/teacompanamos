@@ -266,12 +266,12 @@ function initAjaxForm({
  
   form.addEventListener('submit', function (e) {
     Toastify({
-          text: "Enviando solicitud....",
+          text: "Enviando ....",
           duration: 3000,
           gravity: "top",
           position: "right",
           close: true,
-          backgroundColor: "#999a45ff"
+          backgroundColor: "rgb(244, 248, 5)"
         }).showToast();
 
     e.preventDefault();
