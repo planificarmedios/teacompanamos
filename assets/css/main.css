@@ -7587,5 +7587,19 @@ section::after {
   }
 }
 
+#contact .service-image img {
+  max-height: 420px;
+  object-fit: contain;
+}
+
+@media (max-width: 991px) {
+  #contact .service-image {
+    margin-top: 2rem;
+  }
+
+  #contact .service-image img {
+    max-height: 260px;
+  }
+}
 
 

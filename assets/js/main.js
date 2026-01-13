@@ -358,8 +358,6 @@ document.addEventListener('click', function (e) {
     to: emailTo
   });
 
-  alert (params)
-
   window.location.href = `contact.html?${params.toString()}`;
 });
 

@@ -64,164 +64,160 @@
 
     <main class="main">
 
-      <!-- Page Title -->
-      <div class="page-title">
-        <div class="heading">
-          <div class="container">
-            <div class="row d-flex justify-content-center text-center">
-              <div class="col-lg-8">
-                <h1 class="heading-title">Enviar consulta</h1>
-                <p class="mb-0">
-                  Envianos tu inquietud, juntos podemos encontrar el tipo de acompañamiento que mejor se adapte a tus necesidades..
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-       </div><!-- End Page Title -->
-
-      <!-- Contact Section -->
       <section id="contact" class="contact section">
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        
           <div class="row gy-4 mt-4">
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
-              <div class="service-image">
-                <!-- Reemplazá esta imagen -->
-                <img src="assets/img/health/vision.png" alt=""
+
+            <!-- ================= FORMULARIO ================= -->
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="600">
+
+              <form
+                id="serviceForm"
+                action="send-service.php"
+                method="post"
+                novalidate
+                class="php-email-form">
+
+                <!-- destinatario -->
+                <input type="hidden" name="to" id="serviceTo" value="presupuesto@teacompanamos.com.ar">
+
+                <!-- servicio -->
+                <div class="mb-3">
+                  <h4 class="form-label">Envianos tu consulta</h4>
+                  <input
+                    type="text"
+                    name="subject"
+                    id="serviceSubject"
+                    class="form-control"
+                    readonly>
+                </div>
+
+                <div class="row gy-3">
+
+                  <!-- RESPONSABLE -->
+                  <div class="col-lg-4 col-md-6">
+                    <input
+                      type="text"
+                      name="responsable"
+                      class="form-control"
+                      placeholder="Nombre del responsable"
+                      required>
+                  </div>
+
+                  <!-- PACIENTE -->
+                  <div class="col-lg-4 col-md-6">
+                    <input
+                      type="text"
+                      name="paciente"
+                      class="form-control"
+                      placeholder="Nombre del paciente"
+                      required>
+                  </div>
+
+                  <!-- DOMICILIO -->
+                  <div class="col-lg-4 col-md-6">
+                    <input
+                      type="text"
+                      name="domicilio"
+                      class="form-control"
+                      placeholder="Domicilio y localidad"
+                      required>
+                  </div>
+
+                  <!-- OBRA SOCIAL -->
+                  <div class="col-lg-4 col-md-6">
+                    <input
+                      type="text"
+                      name="obra_social"
+                      class="form-control"
+                      placeholder="Obra Social">
+                  </div>
+
+                  <!-- DIAGNÓSTICO / CUD -->
+                  <div class="col-lg-4 col-md-6">
+                    <input
+                      type="text"
+                      name="diagnostico"
+                      class="form-control"
+                      placeholder="Diagnóstico / CUD">
+                  </div>
+
+                  <!-- TELÉFONO -->
+                  <div class="col-lg-4 col-md-6">
+                    <input
+                      type="tel"
+                      name="telefono"
+                      class="form-control"
+                      placeholder="Teléfono / WhatsApp">
+                  </div>
+
+                  <!-- EMAIL -->
+                  <div class="col-md-12">
+                    <input
+                      type="email"
+                      name="email"
+                      class="form-control"
+                      placeholder="Correo electrónico">
+                  </div>
+
+                  <!-- DESCRIPCIÓN -->
+                  <div class="col-md-12">
+                    <textarea
+                      class="form-control"
+                      name="descripcion"
+                      rows="3"
+                      placeholder="Descripción del requerimiento"></textarea>
+                  </div>
+
+                  <!-- BOTÓN -->
+                  <div class="col-md-12 text-center mt-3">
+                    <button
+                      type="submit"
+                      class="btn btn-appointment btn-spinner"
+                      data-loading-text="Enviando...">
+
+                      <span class="btn-text">Enviar solicitud</span>
+
+                      <span class="btn-loading d-none">
+                        <span
+                          class="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"></span>
+                      </span>
+
+                    </button>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+
+            <!-- ================= IMAGEN ================= -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="500">
+              <div class="service-image text-center">
+                <img
+                  src="assets/img/health/vision.png"
+                  alt="Acompañamiento profesional"
                   class="img-fluid">
               </div>
             </div>
 
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
-              <form
-  id="serviceForm"
-  action="send-service.php"
-  method="post"
-  novalidate
-  class="php-email-form">
-
-  <input type="hidden" name="to" id="serviceTo">
-
-  <!-- SUBJECT AUTOMÁTICO -->
-  <div class="mb-3">
-    <h4 class="form-label">Servicio solicitado</h4>
-    <input
-      type="text"
-      name="subject"
-      id="serviceSubject"
-      class="form-control"
-      readonly>
-  </div>
-
-  <div class="row gy-3">
-
-    <div class="col-md-6">
-      <input
-        type="text"
-        name="responsable"
-        class="form-control"
-        placeholder="Nombre del responsable"
-        required>
-    </div>
-
-    <div class="col-md-6">
-      <input
-        type="text"
-        name="paciente"
-        class="form-control"
-        placeholder="Nombre del paciente"
-        required>
-    </div>
-
-    <div class="col-md-12">
-      <input
-        type="text"
-        name="domicilio"
-        class="form-control"
-        placeholder="Domicilio y localidad"
-        required>
-    </div>
-
-    <div class="col-md-12">
-      <input
-        type="text"
-        name="obra_social"
-        class="form-control"
-        placeholder="Obra Social">
-    </div>
-
-    <div class="col-md-12">
-      <input
-        type="text"
-        name="diagnostico"
-        class="form-control"
-        placeholder="Diagnóstico / CUD">
-    </div>
-
-    <div class="col-md-12">
-      <textarea
-        class="form-control"
-        name="descripcion"
-        rows="4"
-        placeholder="Descripción del requerimiento"></textarea>
-    </div>
-
-    <div class="col-md-6">
-      <input
-        type="email"
-        name="email"
-        class="form-control"
-        placeholder="Correo electrónico">
-    </div>
-
-    <div class="col-md-6">
-      <input
-        type="tel"
-        name="telefono"
-        class="form-control"
-        placeholder="Tel / WhatsApp">
-    </div>
-
-    <input type="hidden" name="to" value="presupuesto@teacompanamos.com.ar">
-
-    <!-- BOTÓN -->
-    <div class="col-md-12 text-center">
-      <button
-        type="submit"
-        class="btn btn-appointment btn-spinner"
-        data-loading-text="Enviando...">
-
-        <span class="btn-text">Enviar solicitud</span>
-
-        <span class="btn-loading d-none">
-          <span class="spinner-border spinner-border-sm"
-                role="status"
-                aria-hidden="true"></span>
-        </span>
-
-      </button>
-    </div>
-
-  </div>
-              </form>
-
-            </div>  
           </div>
 
+          <!-- REDES -->
           <div class="social-links text-center mt-5" data-aos="zoom-in" data-aos-delay="700">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
           </div>
 
         </div>
+      </section>
 
-      </section><!-- /Contact Section -->
 
     </main>
 
