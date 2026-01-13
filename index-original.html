@@ -29,7 +29,7 @@
 
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=18.0" rel="stylesheet">
+  <link href="assets/css/main.css?v=17.0" rel="stylesheet">
 
 
 </head>
@@ -237,9 +237,12 @@
       </section>
 
       <section id="service-description" class="services section">
+
         <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
           <div class="services-grid">
             <div class="row g-4">
+
               <div class="col-lg-4 col-md-6 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="600">
                 <div class="service-card maternal">
                   <div class="service-header">
@@ -324,6 +327,242 @@
 
             </div>
           </div>
+
+        </div>
+
+      </section>
+
+      <section id="gallery" class="gallery section">  
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+          <div data-default-filter="*">
+            <ul class="gallery-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
+              <li id="tab-asistencia" data-filter=".filter-nature" class="filter-active" data-section='tab-asistencia'
+                onclick="mostrarUnidad('section-asistencia')">
+                Unidad de Asistencia Psicológica
+              </li>
+              <li id="tab-acompanamiento" data-filter=".filter-architecture" data-section='tab-acompanamiento'
+                onclick="mostrarUnidad('section-acompanamiento')">
+                Unidad de Acompañamiento Terapéutico
+              </li>
+              <li id="tab-psicoeducativa" data-filter=".filter-people" data-section='tab-psicoeducativa'
+                onclick="mostrarUnidad('section-psicoeducativa')">
+                Unidad Psicoeducativa
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="section-asistencia" class="service-details-2 section unidad-content active">
+
+        <div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="row gy-5">
+
+            <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
+              <div class="service-image">
+                <img src="assets/img/health/unidad-psicologica.png" alt="Cardiology Services" class="img-fluid">
+              </div>
+            </div>
+
+            <div class="col-lg-6 aos-init aos-animate" data-aos="fade-left" data-aos-delay="300">
+              <div class="service-content">
+                <!-- <h2>Unidad Asistencia Psicológica</h2> -->
+                <p class="service-tagline">Profesionalismo, calidez y compromiso.</p>
+
+                <p>La <strong>Unidad Asistencia Psicológica</strong> está dedicada a brindar <strong>atención
+                    psicológica especializada
+                    a personas adultas</strong>, adaptándose a sus tiempos, necesidades y contextos. Ofrecemos dos
+                  modalidades: sesiones presenciales en consultorio y atención virtual a través de telepsicología,
+                  garantizando accesibilidad y continuidad terapéutica.</p>
+
+                <p>Nuestro equipo clínico trabaja desde una perspectiva integradora, respetuosa y empática,
+                  creando espacios seguros donde cada persona pueda explorar sus emociones, resignificar
+                  experiencias y construir herramientas para afrontar sus desafíos. Ya sea en el consultorio o desde
+                  la comodidad del hogar, el vínculo terapéutico se sostiene con profesionalismo, calidez y
+                  compromiso.</p>
+
+               <!--  <div class="service-actions">
+                  <a href="#contact" class="btn-primary">Consultar</a>
+                </div> -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- SERVICIOS -->
+          <div class="row mt-5">
+
+            <!-- Card 1 -->
+            <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+              <div class="service-card h-100">
+                <h4>Terapia psicológica individual</h4>
+                <p>
+                  Espacio terapéutico personalizado para trabajar dificultades emocionales,
+                  conductuales y vinculares. El enfoque es en
+                  <strong>terapia cognitivo-conductual</strong>,
+                  orientada a objetivos definidos junto al paciente.
+                </p>
+                  <div class="service-actions">
+                      <button
+                        type="button"
+                        class="btn-consultar"
+                        onclick="openServiceModal(this, 'presupuesto@teacompanamos.com.ar')">
+                        Solicitar Servicio
+                      </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+              <div class="service-card h-100">
+                <h4>Tratamiento de conductas adictivas</h4>
+                <p>Intervención psicológica para el acompañamiento y tratamiento de distintas adicciones:</p>
+                <ul>
+                  <li>Ludopatía.</li>
+                  <li>Drogadependencia.</li>
+                  <li>Adicciones psicológicas (uso problemático de tecnologías, entre otras).</li>
+                </ul>
+                <div class="service-actions">
+                      <button
+                        type="button"
+                        class="btn-consultar"
+                        onclick="openServiceModal(this, 'presupuesto@teacompanamos.com.ar')">
+                        Solicitar Servicio
+                      </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+              <div class="service-card h-100">
+                <h4>Atención a traumas y eventos críticos</h4>
+                <p>Abordaje especializado de experiencias traumáticas que impactan en la salud mental, tales como:</p>
+                <ul>
+                  <li>Catástrofes naturales.</li>
+                  <li>Accidentes de tránsito.</li>
+                  <li>Procesos migratorios y desarraigo.</li>
+                  <li>Trauma social vinculado a conflictos, guerras o dictaduras.</li>
+                </ul>
+                <div class="service-actions">
+                      <button
+                        type="button"
+                        class="btn-consultar"
+                        onclick="openServiceModal(this, 'presupuesto@teacompanamos.com.ar')">
+                        Solicitar Servicio
+                      </button>
+                    </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row mt-4 align-items-stretch">
+
+            <!-- Card 4 -->
+            <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+              <div class="service-card h-100">
+                <h4>Innovación terapéutica</h4>
+                <p>Incorporamos herramientas tecnológicas que potencian el proceso terapéutico y mejoran la experiencia
+                  clínica:</p>
+                <ul>
+                  <li><strong>Realidad virtual</strong>, para el abordaje de fobias, ansiedad y exposición controlada.
+                  </li>
+                  <li><strong>Biofeedback</strong>, para el entrenamiento en autorregulación emocional y manejo del
+                    estrés.</li>
+                  <li><strong>Simulador de manejo</strong>, orientado a trastornos asociados a la conducción.</li>
+                  <li><strong>Luminoterapia</strong>, como complemento en tratamientos específicos.</li>
+                </ul>
+                <div class="service-actions">
+                      <button
+                        type="button"
+                        class="btn-consultar"
+                        onclick="openServiceModal(this, 'presupuesto@teacompanamos.com.ar')">
+                        Solicitar Servicio
+                      </button>
+                    </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+              <div class="service-card h-100">
+                <h4>Servicios para instituciones y sindicatos</h4>
+                <p>Intervención psicológica para el acompañamiento y tratamiento de distintas adicciones:</p>
+                <ul>
+                  <li>Ludopatía.</li>
+                  <li>Drogadependencia.</li>
+                  <li>Adicciones psicológicas (uso problemático de tecnologías, entre otras).</li>
+                </ul>
+                <div class="service-actions">
+                      <button
+                        type="button"
+                        class="btn-consultar"
+                        onclick="openServiceModal(this, 'presupuesto@teacompanamos.com.ar')">
+                        Solicitar Servicio
+                      </button>
+                    </div>
+              </div>
+            </div>
+
+            <!-- Espacio para imagen -->
+            <div class="col-lg-4 d-flex align-items-center justify-content-center aos-init aos-animate"
+              data-aos="fade-left" data-aos-delay="300">
+              <!-- Reemplazá este div por tu <img> -->
+              <div class="text-center">
+                <img src="assets/img/health/valores.png" alt="Ilustración" class="img-fluid" style="max-height: 280px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+
+            <div class="col-lg-8 aos-init" data-aos="fade-right" data-aos-delay="100">
+              <div class="booking-section">
+                <h3>Cómo comenzar</h3>
+
+                <div class="availability-info">
+                  <div class="info-item">
+                    <i class="bi bi-telephone"></i>
+                    <div>
+                      <strong>Comunicate</strong>
+                      <span>a través de una de nuestras vías de contacto.</span>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <i class="bi bi-people"></i>
+                    <div>
+                      <strong>Coordinamos</strong>
+                      <span>un primer encuentro sin cargo para conocernos. Puede ser virtual o presencial.</span>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <i class="bi bi-heart"></i>
+                    <div>
+                      <strong>Acordamos</strong>
+                      <span>los próximos pasos hacia el camino de transformación.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 aos-init" data-aos="fade-left" data-aos-delay="200">
+              <div class="appointment-card">
+
+                <h5>Creemos que el proceso terapéutico es un camino de transformación, y estamos acá para acompañarlos.
+                </h5>
+
+
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </section>
 

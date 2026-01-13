@@ -7523,5 +7523,31 @@ custom-span {
   margin: 0;
 }
 
+.unidad-services-content {
+  padding-top: 180px; /* ajustá según la altura real del navbar */
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-card h4 {
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  flex-grow: 1;
+}
+
+.service-actions {
+  margin-top: auto;
+  text-align: center;
+}
+
+.btn-consultar {
+  width: 100%; /* opcional pero queda muy bien */
+}
 
 
