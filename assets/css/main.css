@@ -7550,4 +7550,10 @@ custom-span {
   width: 100%; /* opcional pero queda muy bien */
 }
 
+.services .service-icon.service-icon--transparent {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+
 
