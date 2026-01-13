@@ -7560,5 +7560,32 @@ section::after {
   pointer-events: none;
 }
 
+@media (max-width: 991px) {
+
+  section::before,
+  section::after,
+  .gallery::before,
+  .gallery::after,
+  .unidad-services-content::before,
+  .unidad-services-content::after {
+    pointer-events: none !important;
+  }
+
+}
+
+@media (max-width: 991px) {
+  .service-card {
+    position: relative;
+  }
+
+  .service-actions,
+  .service-actions button,
+  .service-actions a {
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+  }
+}
+
 
 

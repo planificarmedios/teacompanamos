@@ -363,6 +363,14 @@ document.addEventListener('click', function (e) {
   window.location.href = `contact.html?${params.toString()}`;
 });
 
+AOS.init({
+  once: true,
+  disable: function () {
+    return window.innerWidth < 992;
+  }
+});
+
+
 
 
 
