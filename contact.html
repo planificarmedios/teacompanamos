@@ -53,7 +53,7 @@
     <li><a href="index.html#social-media">Redes</a></li>
   </ul>
   <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-</nav>
+        </nav>
 
 
       </div>
@@ -78,7 +78,9 @@
                 class="php-email-form">
 
                 <!-- destinatario -->
-                <input type="hidden" name="to" id="serviceTo" value="presupuesto@teacompanamos.com.ar">
+                <input class="d-none" name="to" id="serviceTo" value="presupuesto@teacompanamos.com.ar">
+                <input type="hidden" name="recaptcha_token">
+
 
                 <!-- servicio -->
                 <div class="mb-3">
@@ -300,6 +302,10 @@
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfHBUosAAAAAMBFPfReIN_zB0xDcACh2CH1SMJz"></script>
+    <script type="module" src="assets/js/forms/forms-init.js"></script>
+
+    
     <script src="assets/js/main.js"></script>
 
 

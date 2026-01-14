@@ -8,7 +8,18 @@ require 'phpmailer/SMTP.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
+/* ======================================================
+   CONFIGURACIÓN
+====================================================== */
+define('RECAPTCHA_SECRET', '6LfHBUosAAAAAHsxfEI3HqHiK7z9Tv2H0bdiWwfo');
+define('RECAPTCHA_MIN_SCORE', 0.5);
+define('DEFAULT_TO', 'info@teacompanamos.com.ar');
+
+/* ======================================================
+   MÉTODO
+====================================================== */
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
     echo json_encode([
         'success' => false,
         'message' => 'Método inválido'
@@ -16,24 +27,82 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$name    = trim($_POST['name'] ?? '');
-$email   = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
-$subject = trim($_POST['subject'] ?? 'Nuevo mensaje desde la web');
-$phone = $_POST['phone'] ?? '';
-$message = trim($_POST['message'] ?? '');
+/* ======================================================
+   HELPERS
+====================================================== */
+function clean($value): string {
+    return htmlspecialchars(trim((string)$value), ENT_QUOTES, 'UTF-8');
+}
 
-if (!$email || !$message || !$phone) {
+function errorResponse(string $message, int $code = 400): void {
+    http_response_code($code);
     echo json_encode([
         'success' => false,
-        'message' => 'Datos inválidos'
+        'message' => $message
     ]);
     exit;
 }
 
+/* ======================================================
+   reCAPTCHA v3
+====================================================== */
+function validateRecaptcha(string $token, string $expectedAction): bool {
+
+    if (!$token) return false;
+
+    $response = file_get_contents(
+        'https://www.google.com/recaptcha/api/siteverify?' .
+        http_build_query([
+            'secret'   => RECAPTCHA_SECRET,
+            'response' => $token,
+            'remoteip' => $_SERVER['REMOTE_ADDR']
+        ])
+    );
+
+    if (!$response) return false;
+
+    $result = json_decode($response, true);
+
+    return (
+        !empty($result['success']) &&
+        ($result['score'] ?? 0) >= RECAPTCHA_MIN_SCORE &&
+        ($result['action'] ?? '') === $expectedAction
+    );
+}
+
+/* ======================================================
+   VALIDAR reCAPTCHA
+====================================================== */
+$recaptchaToken = $_POST['recaptcha_token'] ?? '';
+
+if (!validateRecaptcha($recaptchaToken, 'contact')) {
+    errorResponse('Validación de seguridad fallida', 403);
+}
+
+/* ======================================================
+   DATOS DEL FORMULARIO
+====================================================== */
+$name    = clean($_POST['name'] ?? '');
+$email   = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+$phone   = clean($_POST['phone'] ?? '');
+$subject = clean($_POST['subject'] ?? 'Nuevo mensaje desde la web');
+$message = clean($_POST['message'] ?? '');
+$fecha   = date('d/m/Y H:i');
+
+/* ======================================================
+   VALIDACIONES
+====================================================== */
+if (!$name || !$email || !$phone || !$message) {
+    errorResponse('Faltan campos obligatorios');
+}
+
+/* ======================================================
+   ENVÍO DE MAIL
+====================================================== */
 $mail = new PHPMailer(true);
 
 try {
-    // $mail->SMTPDebug = 2; // solo para pruebas
+    // $mail->SMTPDebug = 2; // solo para debug
 
     $mail->isSMTP();
     $mail->Host       = 'smtp.hostinger.com';
@@ -45,23 +114,36 @@ try {
 
     $mail->CharSet = 'UTF-8';
 
-    $mail->setFrom('info@teacompanamos.com.ar', 'Web');
-    $mail->addAddress('info@teacompanamos.com.ar');
+    $mail->setFrom('info@teacompanamos.com.ar', 'Web Te Acompañamos');
+    $mail->addAddress(DEFAULT_TO);
     $mail->addReplyTo($email, $name);
 
     $mail->Subject = $subject;
-    $mail->Body =
-        "Nombre: $name\n" .
-        "Email: $email\n\n" .
-        "Teléfono: $phone\n" .
-        "Mensaje:\n$message";
 
-    /*
-    |--------------------------------------------------------------------------
-    | Archivo adjunto (opcional)
-    |--------------------------------------------------------------------------
-    */
-    if (!empty($_FILES['attachment']['name'])) {
+    $mail->Body = <<<MAIL
+MENSAJE DESDE LA WEB
+Fecha: $fecha
+
+NOMBRE:
+$name
+
+EMAIL:
+$email
+
+TELÉFONO:
+$phone
+
+MENSAJE:
+$message
+MAIL;
+
+    /* ======================================================
+       ADJUNTO (OPCIONAL)
+    ====================================================== */
+    if (
+        isset($_FILES['attachment']) &&
+        $_FILES['attachment']['error'] === UPLOAD_ERR_OK
+    ) {
 
         $allowedTypes = [
             'application/pdf',
@@ -73,23 +155,15 @@ try {
 
         $fileTmp  = $_FILES['attachment']['tmp_name'];
         $fileName = $_FILES['attachment']['name'];
-        $fileType = $_FILES['attachment']['type'];
         $fileSize = $_FILES['attachment']['size'];
+        $fileType = mime_content_type($fileTmp);
 
         if (!in_array($fileType, $allowedTypes)) {
-            echo json_encode([
-                'success' => false,
-                'message' => 'Tipo de archivo no permitido'
-            ]);
-            exit;
+            errorResponse('Tipo de archivo no permitido');
         }
 
         if ($fileSize > $maxSize) {
-            echo json_encode([
-                'success' => false,
-                'message' => 'El archivo supera los 5MB'
-            ]);
-            exit;
+            errorResponse('El archivo supera los 5MB');
         }
 
         $mail->addAttachment($fileTmp, $fileName);
@@ -102,9 +176,5 @@ try {
     ]);
 
 } catch (Exception $e) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'No se pudo enviar el mensaje',
-        'debug' => $mail->ErrorInfo
-    ]);
+    errorResponse('No se pudo enviar el mensaje', 500);
 }

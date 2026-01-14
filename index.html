@@ -29,7 +29,7 @@
 
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css?v=22.0" rel="stylesheet">
+  <link href="assets/css/main.css?v=23.0" rel="stylesheet">
 
 
 </head>
@@ -312,7 +312,7 @@
                     </p>
                   </div>
                   <div class="service-footer">
-                    <a href="#unidad-psicoeducativa.html" class="service-btn" id="service-btn-psicoeducativa"
+                    <a href="unidad-psicoeducativa.html" class="service-btn" id="service-btn-psicoeducativa"
                       data-section='tab-psicoeducativa'>
                       Ver más
                       <i class="fas fa-arrow-right"></i>
@@ -837,51 +837,49 @@
               <div class="appointment-form-wrapper" data-aos="fade-up" data-aos-delay="200" id="divForm">
 
                 <form action="send-contact.php" id="contactForm" method="post" enctype="multipart/form-data" class="php-email-form">
-
+                  <input type="hidden" name="recaptcha_token">
+                
                   <div class="row gy-3">
-
+                
                     <div class="col-md-6">
                       <input type="text" name="name" class="form-control" placeholder="Nombre" required>
                     </div>
-
+                
                     <div class="col-md-6">
                       <input type="email" name="email" class="form-control" placeholder="Tu Email" required>
                     </div>
-
+                
                     <div class="col-md-12">
                       <input type="tel" name="phone" class="form-control" placeholder="Teléfono / WhatsApp" required>
                     </div>
-
+                
                     <div class="col-md-12">
                       <input type="text" name="subject" class="form-control" placeholder="Asunto" required>
                     </div>
-
+                
                     <div class="col-md-12">
-                      <textarea name="message" class="form-control" rows="5" placeholder="Dejanos tu mensaje"
-                        required></textarea>
+                      <textarea name="message" class="form-control" rows="5" placeholder="Dejanos tu mensaje" required></textarea>
                     </div>
-
+                
                     <div class="col-md-12">
                       <input type="file" name="attachment" class="form-control" accept=".pdf,.doc,.docx">
                     </div>
-
+                
                     <div class="col-md-12 text-center">
                       <div class="loading">Loading</div>
                       <div class="error-message"></div>
                       <div class="sent-message">
                         Your message has been sent. Thank you!
                       </div>
-
-                      <button type="submit"
-                              class="btn btn-appointment btn-spinner"
-                              data-loading-text="Enviando...">
+                
+                      <button type="submit" class="btn btn-appointment btn-spinner" data-loading-text="Enviando...">
                         <span class="btn-text">Enviar consulta</span>
                         <span class="btn-loading d-none">
                           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         </span>
                       </button>
                     </div>
-
+                
                   </div>
                 </form>
 
@@ -978,8 +976,11 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfHBUosAAAAAMBFPfReIN_zB0xDcACh2CH1SMJz"></script>
+  <script type="module" src="assets/js/forms/forms-init.js"></script>
 
+  
+  <script src="assets/js/main.js"></script>
 
   <!-- WhatsApp Floating Widget -->
   <div class="whatsapp-container">

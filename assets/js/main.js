@@ -227,113 +227,7 @@ function stopButtonLoading(button) {
   loader && loader.classList.add('d-none');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
 
-  // CONTACTO → spinner en botón
-  initAjaxForm({
-    formId: 'contactForm',
-    successText: 'Mensaje enviado correctamente. Gracias ✅',
-    useSpinner: true
-  });
-
-  // SERVICIOS → sin spinner
-  initAjaxForm({
-    formId: 'serviceForm',
-    successText: 'Solicitud enviada correctamente ✅',
-    onSuccess: () => {
-      const modalEl = document.getElementById('serviceModal');
-      bootstrap.Modal.getInstance(modalEl)?.hide();
-    }
-  });
-
-});
-
-function initAjaxForm({
-  formId,
-  successText,
-  errorText = 'Error al enviar ❌',
-  onSuccess = null,
-  useSpinner = false,
-  spinnerButtonSelector = '.btn-spinner'
-}) {
-  
-  const form = document.getElementById(formId);
-  if (!form || form.dataset.ajaxInit === 'true') return;
-
-  form.dataset.ajaxInit = 'true';
-
-  const submitBtn = form.querySelector(spinnerButtonSelector);
- 
-  form.addEventListener('submit', function (e) {
-    Toastify({
-          text: "Enviando ....",
-          duration: 3000,
-          gravity: "top",
-          position: "right",
-          close: true,
-          backgroundColor: "rgb(244, 248, 5)"
-        }).showToast();
-
-    e.preventDefault();
-    e.stopImmediatePropagation();
-
-    if (useSpinner) {
-      startButtonLoading(submitBtn);
-    }
-
-    const formData = new FormData(form);
-
-    fetch(form.action, {
-      method: form.method || 'POST',
-      body: formData
-    })
-      .then(res => {
-        if (!res.ok) throw new Error('Network error');
-        return res.json();
-      })
-      .then(data => {
-        if (!data.success) {
-          throw new Error(data.message || 'Error');
-        }
-
-        Toastify({
-          text: successText,
-          duration: 4000,
-          gravity: "top",
-          position: "right",
-          close: true,
-          backgroundColor: "#28a745"
-        }).showToast();
-
-        form.reset();
-
-        if (typeof onSuccess === 'function') {
-          onSuccess();
-        }
-
-      })
-      .catch(err => {
-
-        Toastify({
-          text: errorText,
-          duration: 4000,
-          gravity: "top",
-          position: "right",
-          close: true,
-          backgroundColor: "#dc3545"
-        }).showToast();
-
-        console.error(err);
-      })
-      .finally(() => {
-        if (useSpinner) {
-          stopButtonLoading(submitBtn);
-        }
-      });
-
-    return false;
-  });
-}
 
 function setButtonLoading(button, isLoading) {
   if (!button) return;
@@ -367,6 +261,9 @@ AOS.init({
     return window.innerWidth < 992;
   }
 });
+
+
+
 
 
 
