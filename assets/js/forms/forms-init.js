@@ -4,7 +4,6 @@ import { initAjaxForm } from './ajax-form.js';
 import { bindLiveValidation } from './form-validation.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('forms-init cargado');
 
   // ===== FORMULARIO SERVICIOS =====
   const serviceForm = document.getElementById('serviceForm');

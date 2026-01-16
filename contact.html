@@ -51,6 +51,7 @@
     <li><a href="index.html#about-us">Nosotros</a></li>
     <li><a href="index.html#contact">Contacto</a></li>
     <li><a href="index.html#social-media">Redes</a></li>
+    <li><a href="busquedas.html">Búsquedas</a></li>
   </ul>
   <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -418,15 +419,15 @@
       }
     </script>
 
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const service = params.get('service');
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get('service');
 
-  if (service) {
-    document.getElementById('serviceSubject').value = service;
-  }
-});
+    if (service) {
+      document.getElementById('serviceSubject').value = service;
+    }
+  });
 </script>
 
 

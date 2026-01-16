@@ -253,6 +253,8 @@ document.addEventListener('click', function (e) {
   });
 
   window.location.href = `contact.html?${params.toString()}`;
+  //window.location.href = `index.html?${params.toString()}#contact`;
+
 });
 
 AOS.init({

@@ -62,12 +62,16 @@ function validateRecaptcha(string $token, string $expectedAction): bool {
     if (!$response) return false;
 
     $result = json_decode($response, true);
+    $isLocalhost = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']);
+    $minScore = $isLocalhost ? 0.1 : RECAPTCHA_MIN_SCORE;
 
     return (
         !empty($result['success']) &&
-        ($result['score'] ?? 0) >= RECAPTCHA_MIN_SCORE &&
+        ($result['score'] ?? 0) >= $minScore &&
         ($result['action'] ?? '') === $expectedAction
     );
+
+    
 }
 
 /* ======================================================
