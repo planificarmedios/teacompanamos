@@ -4473,19 +4473,6 @@ section,
   overflow: hidden;
 }
 
-.doctors .doctor-card .doctor-media img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  display: block;
-}
-
-@media (min-width: 992px) {
-  .doctors .doctor-card .doctor-media img {
-    height: 220px;
-  }
-}
-
 .doctors .doctor-card .doctor-media .tag {
   position: absolute;
   top: 12px;
@@ -4767,12 +4754,6 @@ section,
 
 .doctors .profile-tabs .review .stars i {
   color: color-mix(in srgb, var(--accent-color), transparent 15%);
-}
-
-@media (max-width: 992px) {
-  .doctors .doctor-card .doctor-media img {
-    height: 240px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -7528,12 +7509,6 @@ custom-span {
   padding-top: 180px; /* ajustá según la altura real del navbar */
 }
 
-.service-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
 .service-card h4 {
   margin-bottom: 12px;
 }
@@ -7603,4 +7578,78 @@ section::after {
   }
 }
 
+.doctors .doctor-card .doctor-media {
+  overflow: hidden; /* Asegúrate de que no se vean partes de la imagen fuera del contenedor */
+}
 
+.doctors .doctor-card .doctor-media img {
+  width: 100%;
+  height: auto; /* Altura automática para evitar recortes */
+  max-height: 260px; /* Limita la altura */
+  object-fit: cover; /* Mantiene tamaños ratios sin distorsionar */
+  object-position: center; /* Centrar la imagen */
+  display: block; /* Eliminar espacios en línea */
+}
+
+@media (min-width: 992px) {
+  .doctors .doctor-card .doctor-media img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 992px) {
+  .doctors .doctor-card .doctor-media img {
+    height: 240px;
+  }
+}
+
+/**************************************************/
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden; /* CLAVE ABSOLUTA */
+  background: #fff;
+  padding: 0; /* MUY IMPORTANTE */
+}
+
+/* CONTENEDOR DE IMAGEN */
+.service-card-img {
+  width: 100%;
+  height: 260px; /* ajustable */
+  margin: 0;
+  padding: 0;
+  background: #f4f6f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* IMAGEN */
+.service-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* NO recorta */
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* CUERPO DE TEXTO */
+.service-card-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* BOTÓN ABAJO */
+.service-actions {
+  margin-top: auto;
+}
+
+.service-card-img img {
+  object-position: center top;
+}
