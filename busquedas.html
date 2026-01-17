@@ -122,7 +122,8 @@
             </ul>
 
             <div class="service-actions">
-              <button type="button" class="btn-consultar" data-ref="SUPNBB">Postularme</button>
+              <button type="button" class="btn-consultar btn-postular " 
+              data-ref="SUPNBB">Postularme</button>
             </div>
           </div>
         </div>
@@ -152,7 +153,7 @@
             </ul>
 
             <div class="service-actions">
-              <button type="button" class="btn-consultar" data-ref="SIPSEBA">Postularme</button>
+              <button type="button" class="btn-consultar btn-postular " data-ref="ATABA-04">Postularme</button>
             </div>
           </div>
         </div>
@@ -182,7 +183,7 @@
             </ul>
 
             <div class="service-actions">
-              <button type="button" class="btn-consultar" data-ref="ATABA03">Postularme</button>
+              <button type="button" class="btn-consultar btn-postular " data-ref="ATABA-03">Postularme</button>
             </div>
           </div>
         </div>
@@ -212,7 +213,7 @@
             </ul>
 
             <div class="service-actions">
-              <button type="button" class="btn-consultar" data-ref="CDBA04">Postularme</button>
+              <button type="button" class="btn-consultar btn-postular " data-ref="CDBA-04">Postularme</button>
             </div>
           </div>
         </div>
@@ -243,7 +244,7 @@
             </ul>
 
             <div class="service-actions">
-              <button type="button" class="btn-consultar" data-ref="CDBA02">Postularme</button>
+              <button type="button" class="btn-consultar btn-postular " data-ref="CDBA-02">Postularme</button>
             </div>
           </div>
         </div>
@@ -274,7 +275,7 @@
             </ul>
 
             <div class="service-actions">
-              <button type="button" class="btn-consultar" data-ref="PSIMDQ01">Postularme</button>
+              <button type="button" class="btn-consultar btn-postular " data-ref="PSIMDQ-01">Postularme</button>
             </div>
           </div>
         </div>
@@ -306,7 +307,7 @@
             </ul>
 
             <div class="service-actions">
-              <button type="button" class="btn-consultar" data-ref="KNMDQ-01">Postularme</button>
+              <button type="button" class="btn-consultar btn-postular " data-ref="KNMDQ-01">Postularme</button>
             </div>
           </div>
         </div>
@@ -338,7 +339,7 @@
             </ul>
 
             <div class="service-actions">
-              <button type="button" class="btn-consultar" data-ref="FOMDQ-01">Postularme</button>
+              <button type="button" class="btn-consultar btn-postular " data-ref="FOMDQ-01">Postularme</button>
             </div>
           </div>
         </div>
@@ -549,6 +550,15 @@
     }
   </script>
 
+  <script>
+    document.querySelectorAll('.btn-postular').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const referencia = this.getAttribute('data-ref');
+        window.location.href = `laborales.html?ref=${encodeURIComponent(referencia)}`;
+      });
+    });
+   
+  </script>
 
 </body>
 </html>

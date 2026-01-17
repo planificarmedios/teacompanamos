@@ -234,14 +234,23 @@ function setButtonLoading(button, isLoading) {
   button.classList.toggle('loading', isLoading);
 }
 
+AOS.init({
+  once: true,
+  disable: function () {
+    return window.innerWidth < 992;
+  }
+});
+
 document.addEventListener('click', function (e) {
   const btn = e.target.closest('.btn-consultar');
   if (!btn) return;
 
+  // ⛔ Si es botón laboral, no seguimos esta lógica
+  if (btn.classList.contains('btn-postular')) return;
+
   const card = btn.closest('.service-card');
   if (!card) return;
-  console.log (card)
-  
+
   const title = card.querySelector('h4')?.innerText.trim();
   if (!title) return;
 
@@ -253,16 +262,8 @@ document.addEventListener('click', function (e) {
   });
 
   window.location.href = `contact.html?${params.toString()}`;
-  //window.location.href = `index.html?${params.toString()}#contact`;
-
 });
 
-AOS.init({
-  once: true,
-  disable: function () {
-    return window.innerWidth < 992;
-  }
-});
 
 
 

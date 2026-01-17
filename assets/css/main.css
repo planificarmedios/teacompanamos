@@ -7653,3 +7653,67 @@ section::after {
 .service-card-img img {
   object-position: center top;
 }
+
+
+/* Card del formulario laborales */
+.form-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 30px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Título */
+.form-title {
+  color: #022647;
+  font-weight: 600;
+}
+
+#laboralesForm .form-label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #022647;
+}
+
+#laboralesForm .form-control,
+#laboralesForm .form-select {
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+
+#laboralesForm h5 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #022647;
+  font-weight: 600;
+}
+
+#laboralesForm .form-check {
+  padding-left: 1.5rem;
+}
+
+#laboralesForm .form-check-label {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+#laboralesForm button[type="submit"] {
+  margin-top: 30px;
+  padding: 12px 36px;
+}
+
+#laborales {
+  padding-top: 120px; /* ajustá según altura real de tu navbar */
+}
+
+#laboralesForm button[type="submit"] {
+  width: auto;
+  min-width: 220px;
+}
+
+
+
