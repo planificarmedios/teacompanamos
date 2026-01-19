@@ -86,21 +86,23 @@
 
             <div class="form-card">
            
-              <form id="laboralesForm" enctype="multipart/form-data">
+              <form
+                id="laboralesForm"
+                method="POST"
+                action="send-laborales.php"
+                enctype="multipart/form-data"
+              >
 
-                <!-- ===============================
-       DATOS DE LA POSTULACIÓN
-  ================================ -->
-                <h5 class="mb-3">Datos de la postulación</h5>
+              <h5 class="mb-3">Datos de la postulación</h5>
 
-                <div class="mb-3">
+                <div class="mb-3 d-none">
                   <label class="form-label">Te postulás para</label>
                   <input type="text" class="form-control" name="puesto" id="puesto" readonly>
                 </div>
 
                 <div class="mb-3">
-                  <label class="form-label">Código de referencia</label>
-                  <input type="text" class="form-control" name="referencia" id="referencia" readonly>
+                  <label disabled class="form-label">Código de referencia</label>
+                  <input disabled type="text" class="form-control" name="referencia" id="referencia" readonly>
                 </div>
 
                 <!-- ===============================
@@ -448,57 +450,16 @@
   </script>
 
   <script>
-    function mostrarUnidad(sectionId) {
-
-      /* 1. Ocultar todas las secciones */
-      document.querySelectorAll('.unidad-content').forEach(sec => {
-        sec.classList.remove('active');
-        sec.style.display = 'none';
-      });
-
-      /* 2. Mostrar sección activa */
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.style.display = 'block';
-        section.classList.add('active');
-      }
-
-      /* ====== CALCULAR ID BASE ====== */
-      // section-asistencia → asistencia
-      const key = sectionId.replace('section-', '');
-
-      /* 3. Resetear tabs */
-      document
-        .querySelectorAll('.gallery .isotope-filters li')
-        .forEach(tab => tab.classList.remove('filter-active'));
-
-      /* 4. Activar tab correcto */
-      const activeTab = document.getElementById(`tab-${key}`);
-      activeTab?.classList.add('filter-active');
-
-      /* 5. Resetear botones */
-      document
-        .querySelectorAll('.service-btn')
-        .forEach(btn => btn.classList.remove('active'));
-
-      /* 6. Activar botón correcto */
-      const activeBtn = document.getElementById(`service-btn-${key}`);
-      activeBtn?.classList.add('active');
-
-      /* 7. Scroll suave */
-      document
-        .querySelector('#gallery')
-        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  </script>
-
-  <script>
     document.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
-      const service = params.get('service');
+      const ref = params.get('ref') ?? 'SER CONSIDERADO EN FUTURAS BUSQUEDAS';
+      const referencia = params.get('ref') ?? 'SUBIR MI CV A DB';
 
-      if (service) {
-        document.getElementById('serviceSubject').value = service;
+      console.log (ref)
+
+      if (ref) {
+        document.getElementById('puesto').value = ref;
+        document.getElementById('referencia').value = referencia;
       }
     });
   </script>

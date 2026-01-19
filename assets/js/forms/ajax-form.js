@@ -32,7 +32,7 @@ export function initAjaxForm({
       gravity: "top",
       position: "right",
       close: false,
-      backgroundColor: "#ffc107"
+      style: { background: "#ffc107" }
     });
     sendingToast.showToast();
 
@@ -72,7 +72,7 @@ export function initAjaxForm({
                 gravity: "top",
                 position: "right",
                 close: true,
-                backgroundColor: "#28a745"
+                style: { background: "#28a745" }
               }).showToast();
 
               form.reset();
@@ -87,7 +87,7 @@ export function initAjaxForm({
                 gravity: "top",
                 position: "right",
                 close: true,
-                backgroundColor: "#dc3545"
+                style: { background: "#dc3545" }
               }).showToast();
 
               console.error(err);

@@ -29,4 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
       recaptchaAction: 'contact'
     });
   }
+
+  // ===== FORMULARIO LABORALES =====
+  const laboralesForm = document.getElementById('laboralesForm');
+  if (laboralesForm) {
+    bindLiveValidation(laboralesForm);
+
+    initAjaxForm({
+      formId: 'laboralesForm',
+      successText: 'Postulación enviada correctamente ✅',
+      useSpinner: true,
+      recaptchaAction: 'laborales'
+    });
+  }
+
 });
