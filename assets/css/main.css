@@ -7418,11 +7418,6 @@ custom-span {
   flex-direction: column;
 }
 
-.service-card .service-actions {
-  margin-top: auto; /* separa el botón del contenido */
-  padding-top: 1rem; /* separación agradable del contenido */
-}
-
 .btn-consultar {
   display: inline-flex;
   align-items: center;
@@ -7713,6 +7708,81 @@ section::after {
 #laboralesForm button[type="submit"] {
   width: auto;
   min-width: 220px;
+}
+
+.tab-section {
+  display: none;
+}
+
+.tab-section.active {
+  display: block;
+}
+
+.btn-outline-unidad {
+  background-color: #ffffff;
+  color: #14b87a;
+  border: 2px solid #14b87a;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-outline-unidad:hover {
+  background-color: #14b87a;
+  color: #ffffff;
+}
+
+.service-card .service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;          /* 👈 aire respecto al texto */
+}
+
+.service-card .service-actions .btn-consultar {
+  padding: 12px 26px;
+}
+
+.service-card .service-actions .btn-outline-unidad {
+  padding: 10px 20px;        /* 👈 más chico */
+  font-size: 0.95rem;
+}
+
+@media (min-width: 1200px) {
+  .service-card .service-actions {
+    flex-wrap: nowrap;
+  }
+}
+
+.service-card p + ul {
+  margin-bottom: 24px;
+}
+
+/* ===== Mobile adjustments ===== */
+@media (max-width: 576px) {
+
+  .service-card .service-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .service-card .service-actions button {
+    width: 100%;
+  }
+
+  .service-card .service-actions .btn-consultar {
+    font-size: 1rem;
+    padding: 14px 0;
+  }
+
+  .service-card .service-actions .btn-outline-unidad {
+    font-size: 0.95rem;
+    padding: 12px 0;
+  }
 }
 
 
