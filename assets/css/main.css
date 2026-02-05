@@ -634,7 +634,7 @@ h6 {
 }
 
 .page-title .heading {
-  padding: 80px 0;
+  padding: 40px 0;
 }
 
 .page-title .heading h1 {
@@ -4326,9 +4326,6 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# Doctors Section
---------------------------------------------------------------*/
 .doctors {
   /* Theme variables */
   --card-bg: var(--surface-color);
@@ -4446,125 +4443,6 @@ section,
   background: var(--accent-color);
   color: var(--contrast-color);
   border-color: var(--accent-color);
-}
-
-.doctors .doctor-card {
-  border: 1px solid var(--card-border);
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  height: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.doctors .doctor-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 34px color-mix(in srgb, var(--default-color), transparent 88%);
-}
-
-.doctors .doctor-card:hover .doctor-media .socials {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.doctors .doctor-card .doctor-media {
-  position: relative;
-  overflow: hidden;
-}
-
-.doctors .doctor-card .doctor-media .tag {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.doctors .doctor-card .doctor-media .tag.alt {
-  background: color-mix(in srgb, var(--accent-color), transparent 20%);
-}
-
-.doctors .doctor-card .doctor-media .socials {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  display: flex;
-  gap: 8px;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: all 0.3s ease;
-}
-
-.doctors .doctor-card .doctor-media .socials a {
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  color: var(--default-color);
-  transition: all 0.3s ease;
-}
-
-.doctors .doctor-card .doctor-media .socials a:hover {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  border-color: var(--accent-color);
-  transform: translateY(-2px);
-}
-
-.doctors .doctor-card .doctor-content {
-  padding: 16px;
-}
-
-.doctors .doctor-card .doctor-content .doctor-name {
-  font-size: 1.1rem;
-  margin: 0 0 4px;
-}
-
-.doctors .doctor-card .doctor-content .doctor-title {
-  color: var(--muted);
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-}
-
-.doctors .doctor-card .doctor-content .doctor-desc {
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-}
-
-.doctors .doctor-card .doctor-content .doctor-meta {
-  margin-bottom: 12px;
-}
-
-.doctors .doctor-card .doctor-content .doctor-meta .badge.dept {
-  background: var(--soft-accent);
-  color: var(--accent-color);
-  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 65%);
-  border-radius: 8px;
-  padding: 6px 10px;
-  font-weight: 600;
-}
-
-.doctors .doctor-card .doctor-content .doctor-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.doctors .doctor-carousel .swiper {
-  padding-bottom: 36px;
-}
-
-.doctors .doctor-carousel .swiper-wrapper {
-  height: auto !important;
 }
 
 .doctors .doctor-carousel .swiper-button-prev,
@@ -7573,30 +7451,6 @@ section::after {
   }
 }
 
-.doctors .doctor-card .doctor-media {
-  overflow: hidden; /* Asegúrate de que no se vean partes de la imagen fuera del contenedor */
-}
-
-.doctors .doctor-card .doctor-media img {
-  width: 100%;
-  height: auto; /* Altura automática para evitar recortes */
-  max-height: 260px; /* Limita la altura */
-  object-fit: cover; /* Mantiene tamaños ratios sin distorsionar */
-  object-position: center; /* Centrar la imagen */
-  display: block; /* Eliminar espacios en línea */
-}
-
-@media (min-width: 992px) {
-  .doctors .doctor-card .doctor-media img {
-    height: 220px;
-  }
-}
-
-@media (max-width: 992px) {
-  .doctors .doctor-card .doctor-media img {
-    height: 240px;
-  }
-}
 
 /**************************************************/
 
@@ -7784,6 +7638,141 @@ section::after {
     padding: 12px 0;
   }
 }
+
+.mission-vision .img-fluid img {
+  border-radius: 20px;      /* ajustá el radio a gusto */
+  overflow: hidden;
+}
+
+.heading-title + .text-blog {
+  padding-top: 16px; /* ajustá a gusto */
+}
+
+/* ===============================
+   CARD BASE
+================================ */
+.doctors .doctor-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doctors .doctor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px color-mix(in srgb, var(--default-color), transparent 88%);
+}
+
+/* ===============================
+   MEDIA (IMAGEN)
+   🔑 Altura fija, NO la imagen
+================================ */
+.doctors .doctor-card .doctor-media {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.doctors .doctor-card .doctor-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===============================
+   CONTENT
+================================ */
+.doctors .doctor-card .doctor-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px;
+}
+
+/* ===============================
+   TITLE
+================================ */
+.doctors .doctor-card .doctor-name {
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+/* ===============================
+   DESCRIPTION
+   (justificado prolijo)
+================================ */
+.doctors .doctor-card .doctor-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+/* En mobile evitamos ríos */
+@media (max-width: 576px) {
+  .doctors .doctor-card .doctor-desc {
+    text-align: left;
+  }
+}
+
+.doctors .doctor-card .doctor-name {
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+  text-align: center;
+  line-height: 1.35;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  /* estándar (futuro / linter feliz) */
+  line-clamp: 3;
+
+  /* soporte real hoy */
+  -webkit-line-clamp: 3;
+}
+
+
+.doctors .doctor-card .doctor-name {
+  line-height: 1.35;
+}
+
+.doctors .doctor-card {
+  position: relative;
+}
+
+.doctors .doctor-card .doctor-content {
+  padding: 16px;
+  padding-bottom: 72px; /* espacio reservado para el botón */
+}
+
+.doctors .doctor-card .doctor-actions {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+
 
 
 
