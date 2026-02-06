@@ -7767,12 +7767,63 @@ section::after {
   justify-content: center;
 }
 
+.page-title-content p {
+  margin-top: 2rem; /* ajustá a gusto */
+}
 
+/* BLOG CARD FIX — ALTURAS UNIFORMES */
 
+.doctor-card--blog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
+/* CONTENEDOR DE IMAGEN */
+.doctor-card--blog .doctor-img {
+  height: 220px;            /* ajustá si querés más o menos alto */
+  overflow: hidden;
+}
 
+/* IMAGEN */
+.doctor-card--blog .doctor-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
+/* CONTENIDO */
+.doctor-card--blog .doctor-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
 
+/* TEXTO */
+.doctor-card--blog .doctor-desc {
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
 
+/* BOTÓN SIEMPRE ABAJO */
+.doctor-card--blog .doctor-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
 
+/* TEXTO LIMITADO A MISMAS LINEAS */
+.doctor-card--blog .doctor-desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  -webkit-line-clamp: 4; /* 👈 cantidad de líneas */
+  line-clamp: 4;
+
+  text-align: justify;
+  line-height: 1.6;
+}
 
