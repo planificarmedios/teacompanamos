@@ -1,11 +1,3 @@
-/**
-* Template Name: MediNest
-* Template URL: https://bootstrapmade.com/medinest-bootstrap-hospital-template/
-* Updated: Aug 11 2025 with Bootstrap v5.3.7
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
 (function() {
   "use strict";
 
@@ -255,13 +247,16 @@ document.addEventListener('click', function (e) {
   if (!title) return;
 
   const emailTo = btn.dataset.email || 'presupuesto@teacompanamos.com.ar';
-
+  const unidad  = btn.dataset.unidad || 'acompanamiento';
+ 
   const params = new URLSearchParams({
     service: title,
-    to: emailTo
+    to: emailTo,
+    unidad: unidad
   });
 
   window.location.href = `contact.html?${params.toString()}`;
+
 });
 
 

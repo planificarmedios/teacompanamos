@@ -102,7 +102,7 @@
                       type="text"
                       name="responsable"
                       class="form-control"
-                      placeholder="Nombre del responsable"
+                      placeholder="Nombre completo del responsable"
                       required>
                   </div>
 
@@ -112,7 +112,7 @@
                       type="text"
                       name="paciente"
                       class="form-control"
-                      placeholder="Nombre del paciente"
+                      placeholder="Nombre completo del paciente"
                       required>
                   </div>
 
@@ -150,7 +150,7 @@
                       type="tel"
                       name="telefono"
                       class="form-control"
-                      placeholder="Teléfono / WhatsApp">
+                      placeholder="Teléfono de contacto (WhatsApp)">
                   </div>
 
                   <!-- EMAIL -->
@@ -168,7 +168,7 @@
                       class="form-control"
                       name="descripcion"
                       rows="3"
-                      placeholder="Descripción del requerimiento"></textarea>
+                      placeholder="Comentarios o consultas adicionales"></textarea>
                   </div>
 
                   <!-- BOTÓN -->
@@ -419,13 +419,63 @@
       }
     </script>
 
-<script>
+<!-- <script>
   document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
     const service = params.get('service');
+    const unidad = params.get('unidad');
+    console.log ('service', service)
 
     if (service) {
       document.getElementById('serviceSubject').value = service;
+    }
+
+    if (unidad == 'unidad-asistencia-psicologica') {
+      console.log ('unidad-asistencia-psicologica')
+    } else if (unidad == 'unidad-acompanamiento-terapeutico') {
+      console.log ('unidad-acompanamiento-terapeutico')
+    } else if (unidad == 'unidad-psicoeducativa') {
+      console.log ('unidad-psicoeducativa')
+    }
+
+
+  });
+</script> -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+
+    /* ===== AUTORELLENO SUBJECT ===== */
+    const service = params.get('service');
+    if (service) {
+      const subjectInput = document.getElementById('serviceSubject');
+      if (subjectInput) {
+        subjectInput.value = service;
+      }
+    }
+
+    /* ===== LÓGICA DE UNIDAD ===== */
+    const unidad = params.get('unidad');
+    console.log ('unidad', unidad)
+
+    const obraSocialField = document
+      .querySelector('[name="obra_social"]')
+      ?.closest('.col-lg-4');
+
+    const diagnosticoField = document
+      .querySelector('[name="diagnostico"]')
+      ?.closest('.col-lg-4');
+
+    // Ocultamos por defecto
+    if (obraSocialField) obraSocialField.style.display = 'none';
+    if (diagnosticoField) diagnosticoField.style.display = 'none';
+
+    // Solo se muestran para Unidad de Acompañamiento Terapeutico
+    if (unidad === 'unidad-acompanamiento-terapeutico') {
+      console.log ('entre y muestro todo')
+      if (obraSocialField) obraSocialField.style.display = '';
+      if (diagnosticoField) diagnosticoField.style.display = '';
     }
   });
 </script>
