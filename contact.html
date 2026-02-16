@@ -162,12 +162,21 @@
                       placeholder="Correo electrónico">
                   </div>
 
+                  <!-- INFO TALLERES -->
+                  <div class="col-md-12  campo-info-taller">
+                    <textarea
+                      class="form-control"
+                      name="info-taller"
+                      rows="2"
+                      placeholder="¿Cómo se enteró de los talleres?"></textarea>
+                  </div>
+
                   <!-- DESCRIPCIÓN -->
                   <div class="col-md-12">
                     <textarea
                       class="form-control"
                       name="descripcion"
-                      rows="3"
+                      rows="2"
                       placeholder="Comentarios o consultas adicionales"></textarea>
                   </div>
 
@@ -443,41 +452,71 @@
 </script> -->
 
   <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  const unidad = params.get('unidad');
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
 
-  const obra = document.querySelector('.campo-obra-social');
-  const diag = document.querySelector('.campo-diagnostico');
-  const tel  = document.querySelector('[name="telefono"]')?.closest('.col-lg-4');
-
-  // helper
-  const hide = el => el && (el.style.display = 'none');
-  const show = el => el && (el.style.display = '');
-
-  // RESET
-  show(obra);
-  show(diag);
-
-  // Caso: NO acompañamiento
-  if (unidad !== 'unidad-acompanamiento-terapeutico') {
-    hide(obra);
-    hide(diag);
-
-    // 👉 Hacemos que Teléfono ocupe más ancho
-    if (tel) {
-      tel.classList.remove('col-lg-4');
-      tel.classList.add('col-lg-12');
+    /* ===== PARAMS ===== */
+    const service = params.get('service');
+    const unidad  = params.get('unidad');
+    
+    /* ===== AUTOCOMPLETAR ASUNTO ===== */
+    const subjectInput = document.getElementById('serviceSubject');
+    if (service && subjectInput) {
+      subjectInput.value = service;
     }
-  } else {
-    // 👉 Caso acompañamiento (restaurar layout original)
-    if (tel) {
-      tel.classList.remove('col-lg-12');
-      tel.classList.add('col-lg-4');
+
+    /* ===== CAMPOS ===== */
+    const obra   = document.querySelector('.campo-obra-social');
+    const diag   = document.querySelector('.campo-diagnostico');
+    const info   = document.querySelector('.campo-info-taller');
+    const telCol = document.querySelector('[name="telefono"]')
+                      ?.closest('.col-lg-4, .col-lg-12');
+
+    const hide = el => el && (el.style.display = 'none');
+    const show = el => el && (el.style.display = '');
+
+    /* ===== RESET ===== */
+    show(obra);
+    show(diag);
+    show(info);
+
+    if (telCol) {
+      telCol.classList.remove('col-lg-12');
+      telCol.classList.add('col-lg-4');
     }
-  }
-});
-</script>
+
+    /* ===== REGLAS POR UNIDAD ===== */
+    switch (unidad) {
+
+      case 'unidad-acompanamiento-terapeutico':
+        console.log ('unidad', unidad)
+        hide(info);
+        break;
+
+      case 'unidad-psicoeducativa':
+        console.log ('unidad', unidad)
+        hide(obra);
+        hide(diag);
+        if (telCol) {
+          telCol.classList.remove('col-lg-4');
+          telCol.classList.add('col-lg-12');
+        }
+        break;
+
+      case 'unidad-asistencia-psicologica':
+        console.log ('unidad', unidad)
+        hide(obra);
+        hide(diag);
+        hide(info);
+        if (telCol) {
+          telCol.classList.remove('col-lg-4');
+          telCol.classList.add('col-lg-12');
+        }
+        break;
+    }
+  });
+  </script>
+
 
 
 

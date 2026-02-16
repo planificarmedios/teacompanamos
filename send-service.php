@@ -91,6 +91,7 @@ $domicilio   = clean($_POST['domicilio'] ?? '');
 $obraSocial  = clean($_POST['obra_social'] ?? '');
 $diagnostico = clean($_POST['diagnostico'] ?? '');
 $descripcion = clean($_POST['descripcion'] ?? '');
+$info_taller = clean($_POST['info-taller'] ?? '');
 
 $email       = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
 $telefono    = clean($_POST['telefono'] ?? '');
@@ -157,6 +158,9 @@ $diagnostico
 
 DESCRIPCIÓN:
 $descripcion
+
+INFORMACIÓN DEL TALLER:
+$info_taller
 
 EMAIL:
 $email
