@@ -127,7 +127,7 @@
                   </div>
 
                   <!-- OBRA SOCIAL -->
-                  <div class="col-lg-4 col-md-6">
+                  <div class="col-lg-4 col-md-6 campo-obra-social">
                     <input
                       type="text"
                       name="obra_social"
@@ -136,7 +136,7 @@
                   </div>
 
                   <!-- DIAGNÓSTICO / CUD -->
-                  <div class="col-lg-4 col-md-6">
+                  <div class="col-lg-4 col-md-6 campo-diagnostico">
                     <input
                       type="text"
                       name="diagnostico"
@@ -442,43 +442,43 @@
   });
 </script> -->
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const params = new URLSearchParams(window.location.search);
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const unidad = params.get('unidad');
 
-    /* ===== AUTORELLENO SUBJECT ===== */
-    const service = params.get('service');
-    if (service) {
-      const subjectInput = document.getElementById('serviceSubject');
-      if (subjectInput) {
-        subjectInput.value = service;
-      }
+  const obra = document.querySelector('.campo-obra-social');
+  const diag = document.querySelector('.campo-diagnostico');
+  const tel  = document.querySelector('[name="telefono"]')?.closest('.col-lg-4');
+
+  // helper
+  const hide = el => el && (el.style.display = 'none');
+  const show = el => el && (el.style.display = '');
+
+  // RESET
+  show(obra);
+  show(diag);
+
+  // Caso: NO acompañamiento
+  if (unidad !== 'unidad-acompanamiento-terapeutico') {
+    hide(obra);
+    hide(diag);
+
+    // 👉 Hacemos que Teléfono ocupe más ancho
+    if (tel) {
+      tel.classList.remove('col-lg-4');
+      tel.classList.add('col-lg-12');
     }
-
-    /* ===== LÓGICA DE UNIDAD ===== */
-    const unidad = params.get('unidad');
-    console.log ('unidad', unidad)
-
-    const obraSocialField = document
-      .querySelector('[name="obra_social"]')
-      ?.closest('.col-lg-4');
-
-    const diagnosticoField = document
-      .querySelector('[name="diagnostico"]')
-      ?.closest('.col-lg-4');
-
-    // Ocultamos por defecto
-    if (obraSocialField) obraSocialField.style.display = 'none';
-    if (diagnosticoField) diagnosticoField.style.display = 'none';
-
-    // Solo se muestran para Unidad de Acompañamiento Terapeutico
-    if (unidad === 'unidad-acompanamiento-terapeutico') {
-      console.log ('entre y muestro todo')
-      if (obraSocialField) obraSocialField.style.display = '';
-      if (diagnosticoField) diagnosticoField.style.display = '';
+  } else {
+    // 👉 Caso acompañamiento (restaurar layout original)
+    if (tel) {
+      tel.classList.remove('col-lg-12');
+      tel.classList.add('col-lg-4');
     }
-  });
+  }
+});
 </script>
+
 
 
   </body>
