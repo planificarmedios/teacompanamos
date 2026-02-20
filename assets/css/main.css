@@ -7842,13 +7842,6 @@ section::after {
   line-height: 1;
 }
 
-.header .logo img {
-  display: block;
-  height: 90px;        /* Desktop */
-  width: auto;
-  margin-right: 8px;
-}
-
 /* Tablet */
 @media (max-width: 992px) {
   .header {
@@ -7915,9 +7908,12 @@ section::after {
   letter-spacing: 1px;
 }
 
-
-
-
+.header .logo img {
+  display: block;
+  max-height: 90px;
+  width: auto;
+  margin-right: 8px
+}
 
 
 
