@@ -7938,5 +7938,52 @@ section::after {
   margin-bottom: 10px;
 }
 
+/********************************************/
+
+/* Contenedor general */
+#services .job-card {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+#services .job-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Imagen arriba */
+#services .job-image {
+  aspect-ratio: 4 / 5;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-color: #0f2d4a;
+}
+
+/* Footer botón abajo */
+#services .job-footer {
+  padding: 20px;
+  text-align: center;
+  background: #ffffff;
+}
+
+/* Botón */
+#services .btn-postular {
+  background-color: #16a085;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+#services .btn-postular:hover {
+  background-color: #138d75;
+  transform: scale(1.05);
+}
+
 
 
