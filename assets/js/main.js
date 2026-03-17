@@ -259,7 +259,32 @@ document.addEventListener('click', function (e) {
 
 });
 
+document.addEventListener("DOMContentLoaded", () => {
 
+  const loadInclude = (id, file) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    fetch(file)
+      .then(res => res.text())
+      .then(html => {
+        el.innerHTML = html;
+      })
+      .catch(err => console.error(`Error cargando ${file}`, err));
+  };
+
+  loadInclude("footer-placeholder", "footer.html");
+  // loadInclude("header-placeholder", "header.html");
+
+});
+
+document.addEventListener("click", (e) => {
+  const link = e.target.closest(".go-index");
+  if (!link) return;
+
+  e.preventDefault();
+  window.location.href = "index.html#about-us";
+});
 
 
 
