@@ -1,0 +1,7 @@
+{
+  "name": "teacompanamos",
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "node generate-version.js && git add . && git commit -m \"deploy\" && git push"
+  }
+}
