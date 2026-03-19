@@ -1,14 +1,20 @@
-document.addEventListener("visibilitychange", async function () {
-  if (!document.hidden) {
-    try {
-      const res = await fetch("/version.json?nocache=" + Date.now());
-      const data = await res.json();
+let currentVersion = null;
 
-      if (data.version !== window.siteVersion) {
-        location.reload();
-      }
-    } catch (e) {
-      console.log("Error verificando versión", e);
-    }
+async function checkVersion() {
+  const res = await fetch("/version.json?nocache=" + Date.now());
+  const data = await res.json();
+
+  if (currentVersion && currentVersion !== data.version) {
+    location.reload();
+  }
+
+  currentVersion = data.version;
+}
+
+checkVersion();
+
+document.addEventListener("visibilitychange", function () {
+  if (!document.hidden) {
+    checkVersion();
   }
 });
