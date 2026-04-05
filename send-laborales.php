@@ -5,6 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'phpmailer/Exception.php';
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
+require 'config/mail.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -13,8 +14,6 @@ header('Content-Type: application/json; charset=utf-8');
 ====================================================== */
 define('RECAPTCHA_SECRET', '6LfHBUosAAAAAHsxfEI3HqHiK7z9Tv2H0bdiWwfo');
 define('RECAPTCHA_MIN_SCORE', 0.5);
-
-define('LABORALES_TO', 'empleo@teacompanamos.com.ar');
 
 /* ======================================================
    MÉTODO
@@ -35,10 +34,6 @@ function clean($value): string {
     return htmlspecialchars(trim((string)$value), ENT_QUOTES, 'UTF-8');
 }
 
-function val($value): string {
-    return $value !== '' ? $value : '—';
-}
-
 function errorResponse(string $message, int $code = 400): void {
     http_response_code($code);
     echo json_encode([
@@ -49,7 +44,7 @@ function errorResponse(string $message, int $code = 400): void {
 }
 
 /* ======================================================
-   reCAPTCHA v3
+   reCAPTCHA
 ====================================================== */
 function validateRecaptcha(string $token, string $expectedAction): bool {
 
@@ -85,12 +80,11 @@ if (!validateRecaptcha($recaptchaToken, 'laborales')) {
 }
 
 /* ======================================================
-   DATOS DEL FORMULARIO
+   DATOS
 ====================================================== */
 $puesto     = clean($_POST['puesto'] ?? 'POSTULACIÓN ESPONTÁNEA');
-$referencia = clean($_POST['referencia'] ?? 'SUBIR CV');
-
-$subject = "Postulación – $puesto | Ref: $referencia";
+$referencia = clean($_POST['referencia'] ?? 'SIN REFERENCIA');
+$subject    = "Postulación / Referencia – $puesto ";
 
 $nombre   = clean($_POST['nombre'] ?? '');
 $apellido = clean($_POST['apellido'] ?? '');
@@ -99,7 +93,14 @@ $tipoDoc   = clean($_POST['tipo_documento'] ?? '');
 $documento = clean($_POST['documento'] ?? '');
 $cuil      = clean($_POST['cuil'] ?? '');
 $genero    = clean($_POST['genero'] ?? '');
-$fechaNac  = clean($_POST['fecha_nacimiento'] ?? '');
+$fechaNacRaw = $_POST['fecha_nacimiento'] ?? '';
+
+if ($fechaNacRaw && strtotime($fechaNacRaw)) {
+    $fechaNac = date("d/m/Y", strtotime($fechaNacRaw));
+} else {
+    $fechaNac = '—';
+}
+
 $estadoCivil = clean($_POST['estado_civil'] ?? '');
 
 $celular  = clean($_POST['celular'] ?? '');
@@ -123,32 +124,16 @@ $fechaEnvio = date('d/m/Y H:i');
 /* ======================================================
    VALIDACIONES
 ====================================================== */
-if (
-    !$nombre ||
-    !$apellido ||
-    !$email ||
-    !$celular
-) {
+if (!$nombre || !$apellido || !$email || !$celular) {
     errorResponse('Faltan campos obligatorios');
 }
 
-if (
-    !isset($_FILES['cv']) ||
-    $_FILES['cv']['error'] !== UPLOAD_ERR_OK
-) {
+if (!isset($_FILES['cv']) || $_FILES['cv']['error'] !== UPLOAD_ERR_OK) {
     errorResponse('Debe adjuntar su CV');
 }
 
-/* ======================================================
-   VALIDAR CV
-====================================================== */
-$allowedExt  = ['pdf', 'doc', 'docx'];
-$allowedMime = [
-    'application/pdf',
-    'application/msword',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-];
-
+/* VALIDAR CV */
+$allowedExt = ['pdf', 'doc', 'docx'];
 $ext = strtolower(pathinfo($_FILES['cv']['name'], PATHINFO_EXTENSION));
 
 if (!in_array($ext, $allowedExt)) {
@@ -156,35 +141,30 @@ if (!in_array($ext, $allowedExt)) {
 }
 
 if ($_FILES['cv']['size'] > 5 * 1024 * 1024) {
-    errorResponse('El CV supera el tamaño máximo permitido (5MB)');
-}
-
-$finfo = finfo_open(FILEINFO_MIME_TYPE);
-$mime  = finfo_file($finfo, $_FILES['cv']['tmp_name']);
-finfo_close($finfo);
-
-if (!in_array($mime, $allowedMime)) {
-    errorResponse('Archivo de CV inválido');
+    errorResponse('El CV supera los 5MB');
 }
 
 /* ======================================================
-   ENVÍO DE MAIL
+   MAIL
 ====================================================== */
 $mail = new PHPMailer(true);
 
 try {
 
+    // $mail->SMTPDebug = 2;
+
+    /* SMTP DESDE CONFIG */
     $mail->isSMTP();
-    $mail->Host       = 'smtp.hostinger.com';
+    $mail->Host       = SMTP_HOST;
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'info@teacompanamos.com.ar';
-    $mail->Password   = 'lH$t/a&4^';
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port       = 465;
+    $mail->Username   = SMTP_USER;
+    $mail->Password   = SMTP_PASS;
+    $mail->SMTPSecure = SMTP_SECURE;
+    $mail->Port       = SMTP_PORT;
 
     $mail->CharSet = 'UTF-8';
 
-    $mail->setFrom('info@teacompanamos.com.ar', 'Web Te Acompañamos – Empleos');
+    $mail->setFrom(MAIL_FROM_EMAIL, MAIL_FROM_NAME);
     $mail->addAddress(LABORALES_TO);
     $mail->addReplyTo($email, "$nombre $apellido");
 
@@ -192,64 +172,78 @@ try {
 
     $mail->Subject = $subject;
 
-    $mail->Body = <<<MAIL
-POSTULACIÓN LABORAL
-Fecha: $fechaEnvio
+    /* ======================================================
+       HTML PRO
+    ====================================================== */
+    $mail->isHTML(true);
 
-PUESTO:
-$puesto
+    $mail->Body = "
+    <html>
+    <body style='margin:0; background:#f4f6f8; font-family:Arial;'>
+      <div style='max-width:650px; margin:20px auto; background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);'>
 
-REFERENCIA:
-$referencia
+        <div style='background:#343a40; color:#fff; padding:20px; text-align:center; font-size:20px; font-weight:bold;'>
+          👔 Nueva Postulación Laboral
+        </div>
 
-------------------------------------
+        <div style='padding:20px; color:#333;'>
 
-DATOS PERSONALES
-Nombre: $nombre
-Apellido: $apellido
-Documento: $tipoDoc $documento
-CUIL/CUIT: $cuil
-Género: $genero
-Fecha Nacimiento: $fechaNac
-Estado Civil: $estadoCivil
+          <p><strong>📅 Fecha:</strong> $fechaEnvio</p>
+          <p><strong>📌 Puesto:</strong> $puesto</p>
+          <p><strong>🔎 Referencia:</strong> $referencia</p>
 
-------------------------------------
+          <hr>
 
-CONTACTO
-Celular: $celular
-WhatsApp: $whatsapp
-Email: $email
-LinkedIn: $linkedin
+          <h3>👤 Datos personales</h3>
+          <p><strong>Nombre:</strong> $nombre $apellido</p>
+          <p><strong>Documento:</strong> $tipoDoc $documento</p>
+          <p><strong>CUIL:</strong> $cuil</p>
+          <p><strong>Género:</strong> $genero</p>
+          <p><strong>Nacimiento:</strong> $fechaNac</p>
+          <p><strong>Estado civil:</strong> $estadoCivil</p>
 
-------------------------------------
+          <hr>
 
-FORMACIÓN
-Nivel Educativo: $nivelEdu
-Títulos: $titulos
+          <h3>📞 Contacto</h3>
+          <p><strong>Celular:</strong> $celular</p>
+          <p><strong>WhatsApp:</strong> $whatsapp</p>
+          <p><strong>Email:</strong> <a href='mailto:$email'>$email</a></p>
+          <p><strong>LinkedIn:</strong> $linkedin</p>
 
-Matrícula: $matricula
-RNP: $rnp
-RUP: $rup
-APND: $apnd
+          <hr>
 
-------------------------------------
+          <h3>🎓 Formación</h3>
+          <p><strong>Nivel:</strong> $nivelEdu</p>
+          <p><strong>Títulos:</strong> $titulos</p>
 
-ZONA DE TRABAJO
-Provincia / Localidad: $localidad
-Ciudad / Barrio: $ciudad
+          <p><strong>Matrícula:</strong> $matricula</p>
+          <p><strong>RNP:</strong> $rnp</p>
+          <p><strong>RUP:</strong> $rup</p>
+          <p><strong>APND:</strong> $apnd</p>
 
-MAIL;
+          <hr>
+
+          <h3>📍 Zona de trabajo</h3>
+          <p>$localidad - $ciudad</p>
+
+        </div>
+
+        <div style='background:#f1f1f1; text-align:center; padding:10px; font-size:12px; color:#777;'>
+          CV adjunto | Enviado desde la web
+        </div>
+
+      </div>
+    </body>
+    </html>
+    ";
+
+    /* TEXTO */
+    $mail->AltBody = "Postulación de $nombre $apellido - $puesto";
 
     $mail->send();
 
-    echo json_encode([
-        'success' => true
-    ]);
+    echo json_encode(['success' => true]);
 
 } catch (Exception $e) {
-    errorResponse(
-        'Mailer Error: ' . $mail->ErrorInfo,
-        500
-    );
+    errorResponse('No se pudo enviar la postulación', 500);
 }
-

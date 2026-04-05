@@ -5,6 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'phpmailer/Exception.php';
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
+require 'config/mail.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -13,7 +14,6 @@ header('Content-Type: application/json; charset=utf-8');
 ====================================================== */
 define('RECAPTCHA_SECRET', '6LfHBUosAAAAAHsxfEI3HqHiK7z9Tv2H0bdiWwfo');
 define('RECAPTCHA_MIN_SCORE', 0.5);
-define('DEFAULT_TO', 'presupuesto@teacompanamos.com.ar');
 
 /* ======================================================
    MÉTODO
@@ -44,7 +44,7 @@ function errorResponse(string $message, int $code = 400): void {
 }
 
 /* ======================================================
-   reCAPTCHA v3
+   reCAPTCHA
 ====================================================== */
 function validateRecaptcha(string $token, string $expectedAction): bool {
 
@@ -116,58 +116,102 @@ if (
 $mail = new PHPMailer(true);
 
 try {
-    // $mail->SMTPDebug = 2; // activar solo para debug
 
+    // $mail->SMTPDebug = 2;
+
+    /* SMTP DESDE CONFIG */
     $mail->isSMTP();
-    $mail->Host       = 'smtp.hostinger.com';
+    $mail->Host       = SMTP_HOST;
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'info@teacompanamos.com.ar';
-    $mail->Password   = 'lH$t/a&4^';
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port       = 465;
+    $mail->Username   = SMTP_USER;
+    $mail->Password   = SMTP_PASS;
+    $mail->SMTPSecure = SMTP_SECURE;
+    $mail->Port       = SMTP_PORT;
 
     $mail->CharSet = 'UTF-8';
 
-    $mail->setFrom('info@teacompanamos.com.ar', 'Web Te Acompañamos');
+    $mail->setFrom(MAIL_FROM_EMAIL, MAIL_FROM_NAME);
     $mail->addAddress($to);
     $mail->addReplyTo($email, $responsable);
 
     $mail->Subject = $subject;
 
-    $mail->Body = <<<MAIL
-SOLICITUD DE SERVICIO
-Fecha: $fecha
+    /* ======================================================
+       HTML PROFESIONAL
+    ====================================================== */
+    $mail->isHTML(true);
 
-SERVICIO SOLICITADO:
-$subject
+    $mail->Body = "
+    <html>
+    <body style='margin:0; padding:0; background:#f4f6f8; font-family:Arial, sans-serif;'>
+      <div style='max-width:600px; margin:20px auto; background:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.1);'>
+        
+        <div style='background:#28a745; color:#ffffff; padding:20px; text-align:center; font-size:20px; font-weight:bold;'>
+          📝 Nueva solicitud de servicio
+        </div>
 
-RESPONSABLE:
-$responsable
+        <div style='padding:20px; color:#333;'>
 
-PACIENTE:
-$paciente
+          <p><strong>📅 Fecha:</strong><br>$fecha</p>
+          <p><strong>📌 Servicio solicitado:</strong><br>$subject</p>
 
-DOMICILIO Y LOCALIDAD:
-$domicilio
+          <hr>
 
-OBRA SOCIAL:
-$obraSocial
+          <p><strong>👤 Responsable:</strong><br>$responsable</p>
+          <p><strong>🧒 Paciente:</strong><br>$paciente</p>
+          <p><strong>📍 Domicilio:</strong><br>$domicilio</p>
 
-DIAGNÓSTICO / CUD:
-$diagnostico
+          <p><strong>🏥 Obra Social:</strong><br>$obraSocial</p>
+          <p><strong>🧠 Diagnóstico:</strong><br>$diagnostico</p>
 
-DESCRIPCIÓN:
-$descripcion
+          <hr>
 
-INFORMACIÓN DEL TALLER:
-$info_taller
+          <p><strong>💬 Descripción:</strong><br>$descripcion</p>
 
-EMAIL:
-$email
+          <p><strong>🧩 Información del taller:</strong><br>$info_taller</p>
 
-TEL / WHATSAPP:
-$telefono
-MAIL;
+          <hr>
+
+          <p><strong>✉️ Email:</strong><br>
+            <a href='mailto:$email'>$email</a>
+          </p>
+
+          <p><strong>📞 Tel / WhatsApp:</strong><br>$telefono</p>
+
+        </div>
+
+        <div style='background:#f1f1f1; text-align:center; padding:10px; font-size:12px; color:#777;'>
+          Solicitud enviada desde la web - Te Acompañamos
+        </div>
+
+      </div>
+    </body>
+    </html>
+    ";
+
+    /* TEXTO PLANO */
+    $mail->AltBody = "
+    SOLICITUD DE SERVICIO
+
+    Fecha: $fecha
+    Servicio: $subject
+
+    Responsable: $responsable
+    Paciente: $paciente
+    Domicilio: $domicilio
+
+    Obra social: $obraSocial
+    Diagnóstico: $diagnostico
+
+    Descripción:
+    $descripcion
+
+    Taller:
+    $info_taller
+
+    Email: $email
+    Teléfono: $telefono
+    ";
 
     $mail->send();
 

@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Juan Pérez",
+    "unit": "psicologia",
+    "img": "assets/img/doctors/1.jpg",
+    "enfoque": "Cognitivo conductual",
+    "matricula": "MP 1001",
+    "bio": "Tratamiento de ansiedad, estrés y vínculos.",
+    "interest": "Desarrollo personal"
+  },
+  {
+    "name": "Ana Gómez",
+    "unit": "psicoeducativa",
+    "img": "assets/img/doctors/2.jpg",
+    "taller": "Taller de ansiedad",
+    "bio": "Espacio grupal de aprendizaje emocional."
+  },
+  {
+    "name": "Carlos López",
+    "unit": "acompanamiento",
+    "img": "assets/img/doctors/3.jpg",
+    "ciudad": "Buenos Aires",
+    "tipo": "Adultos mayores",
+    "bio": "Acompañamiento terapéutico domiciliario."
+  },
+  {
+    "name": "Juan Pérez",
+    "unit": "psicologia",
+    "img": "assets/img/doctors/1.jpg",
+    "enfoque": "Cognitivo conductual",
+    "matricula": "MP 1001",
+    "bio": "Tratamiento de ansiedad, estrés y vínculos.",
+    "interest": "Desarrollo personal"
+  },
+  {
+    "name": "Ana Gómez",
+    "unit": "psicoeducativa",
+    "img": "assets/img/doctors/2.jpg",
+    "taller": "Orientación vocacional",
+    "bio": "Espacio grupal de aprendizaje emocional."
+  },
+  {
+    "name": "Carlos López",
+    "unit": "acompanamiento",
+    "img": "assets/img/doctors/3.jpg",
+    "ciudad": "Buenos Aires",
+    "tipo": "Adultos mayores",
+    "bio": "Acompañamiento terapéutico domiciliario."
+  },
+  {
+    "name": "Juan Pérez",
+    "unit": "psicologia",
+    "img": "assets/img/doctors/1.jpg",
+    "enfoque": "Cognitivo conductual",
+    "matricula": "MP 1001",
+    "bio": "Tratamiento de ansiedad, estrés y vínculos.",
+    "interest": "Cognitivo conductual"
+  },
+  {
+    "name": "Ana Gómez",
+    "unit": "psicoeducativa",
+    "img": "assets/img/doctors/2.jpg",
+    "taller": "Habilidades sociales",
+    "bio": "Espacio grupal de aprendizaje emocional."
+  },
+  {
+    "name": "Carlos López",
+    "unit": "acompanamiento",
+    "img": "assets/img/doctors/3.jpg",
+    "ciudad": "Buenos Aires",
+    "tipo": "Adultos mayores",
+    "bio": "Acompañamiento terapéutico domiciliario."
+  },
+  {
+    "name": "Juan Pérez",
+    "unit": "psicologia",
+    "img": "assets/img/doctors/1.jpg",
+    "enfoque": "Cognitivo conductual",
+    "matricula": "MP 1001",
+    "bio": "Tratamiento de ansiedad, estrés y vínculos.",
+    "interest": "Desarrollo personal"
+  },
+  {
+    "name": "Ana Gómez",
+    "unit": "psicoeducativa",
+    "img": "assets/img/doctors/2.jpg",
+    "taller": "Habilidades sociales",
+    "bio": "Espacio grupal de aprendizaje emocional."
+  },
+  {
+    "name": "Carlos López",
+    "unit": "acompanamiento",
+    "img": "assets/img/doctors/3.jpg",
+    "ciudad": "Mar del Plata",
+    "tipo": "Adultos mayores",
+    "bio": "Acompañamiento terapéutico domiciliario."
+  },
+  {
+    "name": "Juan Pérez",
+    "unit": "psicologia",
+    "img": "assets/img/doctors/1.jpg",
+    "enfoque": "Cognitivo conductual",
+    "matricula": "MP 1001",
+    "bio": "Tratamiento de ansiedad, estrés y vínculos.",
+    "interest": "Desarrollo personal"
+  },
+  {
+    "name": "Ana Gómez",
+    "unit": "psicoeducativa",
+    "img": "assets/img/doctors/2.jpg",
+    "taller": "Habilidades sociales",
+    "bio": "Espacio grupal de aprendizaje emocional."
+  },
+  {
+    "name": "Carlos López",
+    "unit": "acompanamiento",
+    "img": "assets/img/doctors/3.jpg",
+    "ciudad": "Avellaneda",
+    "tipo": "Adultos mayores",
+    "bio": "Acompañamiento terapéutico domiciliario."
+  }
+]

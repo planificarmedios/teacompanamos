@@ -5,6 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'phpmailer/Exception.php';
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
+require 'config/mail.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -13,7 +14,6 @@ header('Content-Type: application/json; charset=utf-8');
 ====================================================== */
 define('RECAPTCHA_SECRET', '6LfHBUosAAAAAHsxfEI3HqHiK7z9Tv2H0bdiWwfo');
 define('RECAPTCHA_MIN_SCORE', 0.5);
-define('DEFAULT_TO', 'info@teacompanamos.com.ar');
 
 /* ======================================================
    MÉTODO
@@ -70,8 +70,6 @@ function validateRecaptcha(string $token, string $expectedAction): bool {
         ($result['score'] ?? 0) >= $minScore &&
         ($result['action'] ?? '') === $expectedAction
     );
-
-    
 }
 
 /* ======================================================
@@ -106,40 +104,76 @@ if (!$name || !$email || !$phone || !$message) {
 $mail = new PHPMailer(true);
 
 try {
-    // $mail->SMTPDebug = 2; // solo para debug
+    // $mail->SMTPDebug = 2; // activar si querés debug
 
+    /* SMTP DESDE CONFIG */
     $mail->isSMTP();
-    $mail->Host       = 'smtp.hostinger.com';
+    $mail->Host       = SMTP_HOST;
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'info@teacompanamos.com.ar';
-    $mail->Password   = 'lH$t/a&4^';
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port       = 465;
+    $mail->Username   = SMTP_USER;
+    $mail->Password   = SMTP_PASS;
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = SMTP_PORT;
 
     $mail->CharSet = 'UTF-8';
 
-    $mail->setFrom('info@teacompanamos.com.ar', 'Web Te Acompañamos');
+    $mail->setFrom(SMTP_USER, MAIL_FROM_NAME);
     $mail->addAddress(DEFAULT_TO);
     $mail->addReplyTo($email, $name);
 
     $mail->Subject = $subject;
 
-    $mail->Body = <<<MAIL
-MENSAJE DESDE LA WEB
-Fecha: $fecha
+    /* ======================================================
+       HTML PROFESIONAL
+    ====================================================== */
+    $mail->isHTML(true);
 
-NOMBRE:
-$name
+    $mail->Body = "
+    <html>
+    <body style='margin:0; padding:0; background:#f4f6f8; font-family:Arial, sans-serif;'>
+      <div style='max-width:600px; margin:20px auto; background:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.1);'>
+        
+        <div style='background:#2c7be5; color:#ffffff; padding:20px; text-align:center; font-size:20px; font-weight:bold;'>
+          📩 Nuevo mensaje desde la web
+        </div>
 
-EMAIL:
-$email
+        <div style='padding:20px; color:#333;'>
 
-TELÉFONO:
-$phone
+          <p><strong>📅 Fecha:</strong><br>$fecha</p>
 
-MENSAJE:
-$message
-MAIL;
+          <p><strong>👤 Nombre:</strong><br>$name</p>
+
+          <p><strong>✉️ Email:</strong><br>
+            <a href='mailto:$email'>$email</a>
+          </p>
+
+          <p><strong>📞 Teléfono:</strong><br>$phone</p>
+
+          <p><strong>💬 Mensaje:</strong><br>$message</p>
+
+        </div>
+
+        <div style='background:#f1f1f1; text-align:center; padding:10px; font-size:12px; color:#777;'>
+          Este mensaje fue enviado desde el formulario web
+        </div>
+
+      </div>
+    </body>
+    </html>
+    ";
+
+    /* TEXTO PLANO */
+    $mail->AltBody = "
+    MENSAJE DESDE LA WEB
+
+    Fecha: $fecha
+    Nombre: $name
+    Email: $email
+    Teléfono: $phone
+
+    Mensaje:
+    $message
+    ";
 
     /* ======================================================
        ADJUNTO (OPCIONAL)
@@ -155,7 +189,7 @@ MAIL;
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
         ];
 
-        $maxSize = 5 * 1024 * 1024; // 5 MB
+        $maxSize = 5 * 1024 * 1024;
 
         $fileTmp  = $_FILES['attachment']['tmp_name'];
         $fileName = $_FILES['attachment']['name'];
